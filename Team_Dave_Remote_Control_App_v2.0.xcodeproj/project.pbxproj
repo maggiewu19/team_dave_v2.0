@@ -14,6 +14,9 @@
 		BA54AA811FA0F7CF002398B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA54AA7F1FA0F7CF002398B7 /* LaunchScreen.storyboard */; };
 		BA54AA8C1FA0F7CF002398B7 /* Team_Dave_Remote_Control_App_v2_0Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54AA8B1FA0F7CF002398B7 /* Team_Dave_Remote_Control_App_v2_0Tests.swift */; };
 		BA54AA971FA0F7CF002398B7 /* Team_Dave_Remote_Control_App_v2_0UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54AA961FA0F7CF002398B7 /* Team_Dave_Remote_Control_App_v2_0UITests.swift */; };
+		C0D317121FA65CBF00462773 /* on_off.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D317111FA65CBF00462773 /* on_off.png */; };
+		C0D317141FA696F300462773 /* ChangePresetVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D317131FA696F300462773 /* ChangePresetVCViewController.swift */; };
+		C0D317161FA6E94700462773 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D317151FA6E94700462773 /* back.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		BA54AA921FA0F7CF002398B7 /* Team_Dave_Remote_Control_App_v2.0UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Team_Dave_Remote_Control_App_v2.0UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA54AA961FA0F7CF002398B7 /* Team_Dave_Remote_Control_App_v2_0UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team_Dave_Remote_Control_App_v2_0UITests.swift; sourceTree = "<group>"; };
 		BA54AA981FA0F7CF002398B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0D317111FA65CBF00462773 /* on_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = on_off.png; sourceTree = "<group>"; };
+		C0D317131FA696F300462773 /* ChangePresetVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePresetVCViewController.swift; sourceTree = "<group>"; };
+		C0D317151FA6E94700462773 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = ../../../../../Downloads/back.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,9 @@
 		BA54AA751FA0F7CF002398B7 /* Team_Dave_Remote_Control_App_v2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				C0D317151FA6E94700462773 /* back.png */,
+				C0D317111FA65CBF00462773 /* on_off.png */,
+				C0D317131FA696F300462773 /* ChangePresetVCViewController.swift */,
 				BA54AA761FA0F7CF002398B7 /* AppDelegate.swift */,
 				BA54AA781FA0F7CF002398B7 /* ViewController.swift */,
 				BA54AA7A1FA0F7CF002398B7 /* Main.storyboard */,
@@ -232,7 +241,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0D317121FA65CBF00462773 /* on_off.png in Resources */,
 				BA54AA811FA0F7CF002398B7 /* LaunchScreen.storyboard in Resources */,
+				C0D317161FA6E94700462773 /* back.png in Resources */,
 				BA54AA7E1FA0F7CF002398B7 /* Assets.xcassets in Resources */,
 				BA54AA7C1FA0F7CF002398B7 /* Main.storyboard in Resources */,
 			);
@@ -259,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0D317141FA696F300462773 /* ChangePresetVCViewController.swift in Sources */,
 				BA54AA791FA0F7CF002398B7 /* ViewController.swift in Sources */,
 				BA54AA771FA0F7CF002398B7 /* AppDelegate.swift in Sources */,
 			);
