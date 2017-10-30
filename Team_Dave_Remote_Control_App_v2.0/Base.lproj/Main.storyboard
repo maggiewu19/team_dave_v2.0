@@ -42,18 +42,6 @@
                                     <segue destination="Tfv-ya-G6L" kind="show" identifier="activated" id="0tf-ND-D5L"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lay-Qz-92r">
-                                <rect key="frame" x="20" y="248" width="191" height="500"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="610" id="3v3-hq-MsD"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="622" id="5Dp-Ty-bTE"/>
-                                    <constraint firstAttribute="height" constant="500" id="RV6-Yq-KQc"/>
-                                    <constraint firstAttribute="width" constant="191" id="RaE-Hk-vpl"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="610" id="pMa-Hl-5O3"/>
-                                </constraints>
-                                <state key="normal" title="space for volume"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9K-ur-wX1">
                                 <rect key="frame" x="282" y="138" width="190" height="190"/>
                                 <color key="backgroundColor" red="0.61391064299999998" green="0.87439710920000002" blue="1" alpha="0.45958956870000001" colorSpace="custom" customColorSpace="sRGB"/>
@@ -223,6 +211,36 @@
                                 </constraints>
                                 <state key="normal" title="POWER" image="on_off.png"/>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="IhF-y6-WFt">
+                                <rect key="frame" x="-210" y="436" width="574" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="sliderSlid:" destination="BYZ-38-t0r" eventType="valueChanged" id="GVx-br-rtB"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doE-58-AMW">
+                                <rect key="frame" x="148" y="307" width="100" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="UP" image="up_button.png"/>
+                                <connections>
+                                    <action selector="upAdjust:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0vB-NA-h7K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsC-l5-WaL">
+                                <rect key="frame" x="148" y="509" width="100" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="DOWN" image="down_button.png"/>
+                                <connections>
+                                    <action selector="downAdjust:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qw7-Gh-Ait"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUM-qO-bVg">
+                                <rect key="frame" x="158" y="412" width="80" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -241,8 +259,6 @@
                             <constraint firstItem="yLD-Xs-BLY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="118" id="WGU-M4-9wD"/>
                             <constraint firstItem="UiG-pl-e1l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="282" id="X6h-Gs-UHa"/>
                             <constraint firstItem="cxK-f0-1A2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Zus-m0-d8A"/>
-                            <constraint firstItem="lay-Qz-92r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aJk-uc-DqK"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lay-Qz-92r" secondAttribute="bottom" constant="20" id="aKo-CK-Kl0"/>
                             <constraint firstItem="4P4-dC-xY9" firstAttribute="top" secondItem="yLD-Xs-BLY" secondAttribute="bottom" constant="20" id="afW-ZH-JUj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dww-K8-RIs" secondAttribute="bottom" constant="20" id="c3f-U7-51Y"/>
                             <constraint firstItem="LKp-lJ-4xS" firstAttribute="top" secondItem="O0i-8Y-L8a" secondAttribute="bottom" constant="20" id="dp9-mO-6Rv"/>
@@ -276,6 +292,10 @@
                         <outlet property="Outlet9" destination="dww-K8-RIs" id="FgT-wK-BqT"/>
                         <outlet property="changeOutlet" destination="UiG-pl-e1l" id="pVX-4N-iaa"/>
                         <outlet property="channelOutlet" destination="cxK-f0-1A2" id="HBb-KN-zc0"/>
+                        <outlet property="down_button" destination="gsC-l5-WaL" id="v8E-Um-zA2"/>
+                        <outlet property="slider" destination="IhF-y6-WFt" id="oXs-di-0PJ"/>
+                        <outlet property="up_button" destination="doE-58-AMW" id="sQO-hQ-5SD"/>
+                        <outlet property="volume" destination="MUM-qO-bVg" id="lio-N3-9Pq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -540,7 +560,9 @@
     </scenes>
     <resources>
         <image name="back.png" width="550" height="550"/>
+        <image name="down_button.png" width="381" height="221"/>
         <image name="on_off.png" width="304" height="356"/>
+        <image name="up_button.png" width="381" height="221"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jH4-wm-K0x"/>
