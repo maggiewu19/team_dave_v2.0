@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         NSLog("received string " + receivedString)
         NSLog("currentPreset " + String(ViewController.currentPreset))
         
+        // sets new preset to receivedString
         if (ViewController.currentPreset == 1) {
             Outlet1.setTitle(receivedString, for: .normal)
         } else if (ViewController.currentPreset == 2) {
@@ -45,6 +46,7 @@ class ViewController: UIViewController {
 
         changeOutlet.layer.cornerRadius = 15;
         channelOutlet.layer.cornerRadius = 15;
+        
         // make buttons circular
         Outlet1.layer.cornerRadius = 0.5 * Outlet1.bounds.size.width;
         Outlet2.layer.cornerRadius = 0.5 * Outlet2.bounds.size.width;
@@ -66,6 +68,10 @@ class ViewController: UIViewController {
         Outlet7.backgroundColor = blue
         Outlet8.backgroundColor = blue
         Outlet9.backgroundColor = blue
+        
+        // volume
+        volume.text = String (Int(slider.value));
+        slider.transform = CGAffineTransform(rotationAngle: -(CGFloat(Double.pi/2)));
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,8 +87,16 @@ class ViewController: UIViewController {
 //        self.show(vc as! UIViewController, sender: vc)
     }
     
+    // volume
+    @IBOutlet weak var volume: UILabel!
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var up_button: UIButton!
+    @IBOutlet weak var down_button: UIButton!
+    
     @IBOutlet weak var channelOutlet: UIButton!
     @IBOutlet weak var changeOutlet: UIButton!
+    
+    // presets
     @IBOutlet weak var Outlet1: UIButton!
     @IBOutlet weak var Outlet2: UIButton!
     @IBOutlet weak var Outlet3: UIButton!
@@ -117,6 +131,20 @@ class ViewController: UIViewController {
             Outlet8.backgroundColor = blue
             Outlet9.backgroundColor = blue
         }
+    }
+    
+    @IBAction func sliderSlid(_ sender: UISlider) {
+        volume.text = String (Int(slider.value));
+    }
+    
+    @IBAction func upAdjust(_ sender: UIButton) {
+        slider.value = slider.value + 1;
+        volume.text = String(Int(slider.value));
+    }
+    
+    @IBAction func downAdjust(_ sender: UIButton) {
+        slider.value = slider.value - 1;
+        volume.text = String(Int(slider.value));
     }
     
     @IBAction func ChannelButton(_ sender: Any) {
