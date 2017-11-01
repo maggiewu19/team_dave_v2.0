@@ -20,6 +20,7 @@
 		C0F0C2A51FAA232600811A74 /* down_button.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F0C2A31FAA232600811A74 /* down_button.png */; };
 		C0F0C2A61FAA232600811A74 /* up_button.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F0C2A41FAA232600811A74 /* up_button.png */; };
 		C0F0C2A81FAA24C700811A74 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F0C2A71FAA24C600811A74 /* back.png */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		C0F0C2A31FAA232600811A74 /* down_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = down_button.png; path = ../../../../../Downloads/down_button.png; sourceTree = "<group>"; };
 		C0F0C2A41FAA232600811A74 /* up_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = up_button.png; path = ../../../../../Downloads/up_button.png; sourceTree = "<group>"; };
 		C0F0C2A71FAA24C600811A74 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = ../../../../../Downloads/back.png; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
