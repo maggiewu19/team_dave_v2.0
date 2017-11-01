@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -473,7 +473,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8I-z2-qY9">
                                 <rect key="frame" x="65" y="18" width="101" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="[back button]" image="down_button.png">
+                                <state key="normal" title="[back button]" image="back.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -771,12 +771,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back.png" width="550" height="550"/>
         <image name="down_button.png" width="381" height="221"/>
         <image name="on_off.png" width="304" height="356"/>
         <image name="up_button.png" width="381" height="221"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jH4-wm-K0x"/>
-        <segue reference="ifn-ND-3N1"/>
+        <segue reference="JTi-pO-bar"/>
     </inferredMetricsTieBreakers>
 </document>
