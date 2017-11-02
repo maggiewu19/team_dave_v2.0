@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-//    var receivedString = ""
     let blue = UIColor(red: 157/255, green: 223/255, blue: 255/255, alpha: 1);
     let red = UIColor(red: 255/255, green: 119/255, blue: 121/255, alpha: 1);
     
@@ -19,6 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set title for all presets by retrieving from UserDefaults
         Outlet1.setTitle(UserDefaults.standard.string(forKey: "Outlet1"), for: .normal)
         Outlet2.setTitle(UserDefaults.standard.string(forKey: "Outlet2"), for: .normal)
         Outlet3.setTitle(UserDefaults.standard.string(forKey: "Outlet3"), for: .normal)
@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         Outlet8.setTitle(UserDefaults.standard.string(forKey: "Outlet8"), for: .normal)
         Outlet9.setTitle(UserDefaults.standard.string(forKey: "Outlet9"), for: .normal)
 
+        // make buttons with rounded corners
         changeOutlet.layer.cornerRadius = 15;
         channelOutlet.layer.cornerRadius = 15;
         
@@ -70,6 +71,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var up_button: UIButton!
     @IBOutlet weak var down_button: UIButton!
     
+    // other buttons
     @IBOutlet weak var channelOutlet: UIButton!
     @IBOutlet weak var changeOutlet: UIButton!
     
@@ -84,9 +86,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var Outlet8: UIButton!
     @IBOutlet weak var Outlet9: UIButton!
     
+    // toggles preset buttons between red and blue
+    // red = activated, ready to be changed
+    // blue = not activated, normal preset button
     @IBAction func changePreset(_ sender: Any) {
         if Outlet1.backgroundColor == blue {
-            // change all outlet buttons to red
             Outlet1.backgroundColor = red
             Outlet2.backgroundColor = red
             Outlet3.backgroundColor = red
@@ -97,7 +101,6 @@ class ViewController: UIViewController {
             Outlet8.backgroundColor = red
             Outlet9.backgroundColor = red
         } else {
-//            currentPreset = 0
             Outlet1.backgroundColor = blue
             Outlet2.backgroundColor = blue
             Outlet3.backgroundColor = blue
@@ -122,10 +125,6 @@ class ViewController: UIViewController {
     @IBAction func downAdjust(_ sender: UIButton) {
         slider.value = slider.value - 1;
         volume.text = String(Int(slider.value));
-    }
-    
-    @IBAction func ChannelButton(_ sender: Any) {
-        // change storyboard to channel page
     }
     
     @IBAction func Preset1(_ sender: Any) {
@@ -200,17 +199,18 @@ class ViewController: UIViewController {
         }
     }
     
+    // unwind segue if don't want to change preset anymore
     @IBAction func back(_ segue: UIStoryboardSegue) {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
         if segue.identifier == "activated" {
             let changePresetVC = segue.destination as! ChangePresetVCViewController
             changePresetVC.receivedPreset = String(ViewController.currentPreset)
         }
     }
     
+    // only segue to change preset if click on activated button
     override func shouldPerformSegue(withIdentifier: String?, sender: Any?) -> Bool {
             if withIdentifier == "activated" {
                 if Outlet1.backgroundColor == blue {

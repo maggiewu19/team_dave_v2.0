@@ -10,13 +10,13 @@ import UIKit
 
 class ChangePresetVCViewController: UIViewController {
 
+    // this comes from the preset page, tells us where to save in UserDefaults
     var receivedPreset = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        NSLog("receivedPreset " + String(receivedPreset))
+        
         presetInput.text = String(inputVal);
-        // Do any additional setup after loading the view.
         
         // make buttons circular
         button0.layer.cornerRadius = 0.5 * button0.bounds.size.width;
@@ -38,17 +38,7 @@ class ChangePresetVCViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func preset_num(num: Int) -> Int {
-        if (inputVal == 0) {
-            inputVal = num;
-        }
-        else if (inputVal < 100) {
-            inputVal = inputVal*10 + num;
-        }
-        return inputVal;
-    }
-    
-    
+    // buttons
     @IBOutlet weak var button0: UIButton!
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
@@ -62,9 +52,20 @@ class ChangePresetVCViewController: UIViewController {
     @IBOutlet weak var buttonEnt: UIButton!
     @IBOutlet weak var buttonDel: UIButton!
     
+    // label for preset
     @IBOutlet weak var presetInput: UILabel!
+    
     var inputVal = 0;
     
+    func preset_num(num: Int) -> Int {
+        if (inputVal == 0) {
+            inputVal = num;
+        }
+        else if (inputVal < 100) {
+            inputVal = inputVal*10 + num;
+        }
+        return inputVal;
+    }
     
     @IBAction func input_zero(_ sender: UIButton) {
         presetInput.text = String(preset_num(num: 0))
@@ -111,6 +112,7 @@ class ChangePresetVCViewController: UIViewController {
         presetInput.text = String(inputVal);
     }
     
+    // when new preset is entered, stores preset into UserDefaults
     @IBAction func input_ent(_ sender: UIButton) {
         let newPreset = presetInput.text
         if (receivedPreset == "1") {
@@ -142,16 +144,5 @@ class ChangePresetVCViewController: UIViewController {
             UserDefaults.standard.synchronize()
         }
     }
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-//        let presetVC = segue.destination as! ViewController
-//        presetVC.receivedString = presetInput.text!
-        // Pass the selected object to the new view controller.
-    }
-    
 
 }
