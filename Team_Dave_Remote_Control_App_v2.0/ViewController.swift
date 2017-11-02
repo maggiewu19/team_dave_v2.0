@@ -10,8 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var receivedString = ""
-//    let blue = UIColor.blue;
+//    var receivedString = ""
     let blue = UIColor(red: 157/255, green: 223/255, blue: 255/255, alpha: 1);
     let red = UIColor(red: 255/255, green: 119/255, blue: 121/255, alpha: 1);
     
@@ -19,30 +18,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        NSLog("received string " + receivedString)
-        NSLog("currentPreset " + String(ViewController.currentPreset))
         
-        // sets new preset to receivedString
-        if (ViewController.currentPreset == 1) {
-            Outlet1.setTitle(receivedString, for: .normal)
-        } else if (ViewController.currentPreset == 2) {
-            Outlet2.setTitle(receivedString, for: .normal)
-        } else if (ViewController.currentPreset == 3) {
-            Outlet3.setTitle(receivedString, for: .normal)
-        } else if (ViewController.currentPreset == 4) {
-            Outlet4.setTitle(receivedString, for: .normal)
-        } else if (ViewController.currentPreset == 5) {
-            Outlet5.setTitle(receivedString, for: .normal)
-        } else if (ViewController.currentPreset == 6) {
-            Outlet6.setTitle(receivedString, for: .normal)
-        } else if (ViewController.currentPreset == 7) {
-            Outlet7.setTitle(receivedString, for: .normal)
-        } else if (ViewController.currentPreset == 8) {
-            Outlet8.setTitle(receivedString, for: .normal)
-        } else if (ViewController.currentPreset == 9) {
-            Outlet9.setTitle(receivedString, for: .normal)
-        }
+        Outlet1.setTitle(UserDefaults.standard.string(forKey: "Outlet1"), for: .normal)
+        Outlet2.setTitle(UserDefaults.standard.string(forKey: "Outlet2"), for: .normal)
+        Outlet3.setTitle(UserDefaults.standard.string(forKey: "Outlet3"), for: .normal)
+        Outlet4.setTitle(UserDefaults.standard.string(forKey: "Outlet4"), for: .normal)
+        Outlet5.setTitle(UserDefaults.standard.string(forKey: "Outlet5"), for: .normal)
+        Outlet6.setTitle(UserDefaults.standard.string(forKey: "Outlet6"), for: .normal)
+        Outlet7.setTitle(UserDefaults.standard.string(forKey: "Outlet7"), for: .normal)
+        Outlet8.setTitle(UserDefaults.standard.string(forKey: "Outlet8"), for: .normal)
+        Outlet9.setTitle(UserDefaults.standard.string(forKey: "Outlet9"), for: .normal)
 
         changeOutlet.layer.cornerRadius = 15;
         channelOutlet.layer.cornerRadius = 15;
@@ -77,14 +62,6 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func toChangePresetVC(viewIdentifier: String) {
-        let vc : AnyObject! = self.storyboard!.instantiateViewController(withIdentifier: "ChangePresetViewController")
-//        let vc = storyboard?.instantiateViewController(withIdentifier: "ChangePresetViewController") as! ChangePresetVCViewController
-//        vc.stringPassed = passedPreset
-        navigationController?.pushViewController(vc as! UIViewController, animated: true)
-//        self.show(vc as! UIViewController, sender: vc)
     }
     
     // volume
@@ -152,7 +129,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Preset1(_ sender: Any) {
-        NSLog("send preset1")
         if Outlet1.backgroundColor == red {
             ViewController.currentPreset = 1
         } else {
@@ -161,7 +137,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Preset2(_ sender: Any) {
-        NSLog("send preset2")
         if Outlet2.backgroundColor == red {
             ViewController.currentPreset = 2
         } else {
@@ -170,7 +145,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Preset3(_ sender: Any) {
-        NSLog("send preset3")
         if Outlet3.backgroundColor == red {
             ViewController.currentPreset = 3
         } else {
@@ -179,7 +153,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Preset4(_ sender: Any) {
-        NSLog("send preset4")
         if Outlet4.backgroundColor == red {
             ViewController.currentPreset = 4
         } else {
@@ -188,7 +161,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Preset5(_ sender: Any) {
-        NSLog("send preset5")
         if Outlet5.backgroundColor == red {
             ViewController.currentPreset = 5
         } else {
@@ -197,7 +169,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Preset6(_ sender: Any) {
-        NSLog("send preset6")
         if Outlet6.backgroundColor == red {
             ViewController.currentPreset = 6
         } else {
@@ -206,7 +177,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Preset7(_ sender: Any) {
-        NSLog("send preset7")
         if Outlet7.backgroundColor == red {
             ViewController.currentPreset = 7
         } else {
@@ -215,7 +185,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Preset8(_ sender: Any) {
-        NSLog("send preset8")
         if Outlet8.backgroundColor == red {
             ViewController.currentPreset = 8
         } else {
@@ -224,7 +193,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Preset9(_ sender: Any) {
-        NSLog("send preset9")
         if Outlet9.backgroundColor == red {
             ViewController.currentPreset = 9
         } else {

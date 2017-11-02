@@ -14,7 +14,7 @@ class ChangePresetVCViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("receivedPreset " + String(receivedPreset))
+//        NSLog("receivedPreset " + String(receivedPreset))
         presetInput.text = String(inputVal);
         // Do any additional setup after loading the view.
         
@@ -111,14 +111,45 @@ class ChangePresetVCViewController: UIViewController {
         presetInput.text = String(inputVal);
     }
     
+    @IBAction func input_ent(_ sender: UIButton) {
+        let newPreset = presetInput.text
+        if (receivedPreset == "1") {
+            UserDefaults.standard.set(newPreset, forKey: "Outlet1")
+            UserDefaults.standard.synchronize()
+        } else if (receivedPreset == "2") {
+            UserDefaults.standard.set(newPreset, forKey: "Outlet2")
+            UserDefaults.standard.synchronize()
+        } else if (receivedPreset == "3") {
+            UserDefaults.standard.set(newPreset, forKey: "Outlet3")
+            UserDefaults.standard.synchronize()
+        } else if (receivedPreset == "4") {
+            UserDefaults.standard.set(newPreset, forKey: "Outlet4")
+            UserDefaults.standard.synchronize()
+        } else if (receivedPreset == "5") {
+            UserDefaults.standard.set(newPreset, forKey: "Outlet5")
+            UserDefaults.standard.synchronize()
+        } else if (receivedPreset == "6") {
+            UserDefaults.standard.set(newPreset, forKey: "Outlet6")
+            UserDefaults.standard.synchronize()
+        } else if (receivedPreset == "7") {
+            UserDefaults.standard.set(newPreset, forKey: "Outlet7")
+            UserDefaults.standard.synchronize()
+        } else if (receivedPreset == "8") {
+            UserDefaults.standard.set(newPreset, forKey: "Outlet8")
+            UserDefaults.standard.synchronize()
+        } else if (receivedPreset == "9") {
+            UserDefaults.standard.set(newPreset, forKey: "Outlet9")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        let presetVC = segue.destination as! ViewController
-        presetVC.receivedString = presetInput.text!
-//        presetVC.presetToChange = receivedPreset
+//        let presetVC = segue.destination as! ViewController
+//        presetVC.receivedString = presetInput.text!
         // Pass the selected object to the new view controller.
     }
     
