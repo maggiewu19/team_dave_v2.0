@@ -88,11 +88,30 @@ class ChannelViewController: UIViewController {
         
         // Volume
         volume.text = String(Int(slider.value));
+        
+        // Slider Gesture Recognition
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
+        self.slider.addGestureRecognizer(tapGestureRecognizer)
     }
     
     // Volume
     @IBAction func sliderSlide(_ sender: UISlider) {
         volume.text = String(Int(slider.value));
+    }
+    
+    // Slider Gesture Recognition
+    @objc func sliderTapped(gestureRecognizer: UIGestureRecognizer) {
+        
+        let pointTapped: CGPoint = gestureRecognizer.location(in: self.view)
+        
+        let positionOfSlider: CGPoint = slider.frame.origin
+        let heightOfSlider: CGFloat = slider.frame.size.height
+        
+        let newValue = ((pointTapped.y - positionOfSlider.y) * CGFloat(slider.maximumValue) / heightOfSlider)
+        
+        let volume_value = Float(slider.maximumValue) - Float(newValue);
+        slider.setValue(volume_value, animated: true);
+        volume.text = String(Int(volume_value));
     }
     
     @IBAction func volumeUp(_ sender: UIButton) {
