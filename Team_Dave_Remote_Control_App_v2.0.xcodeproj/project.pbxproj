@@ -451,7 +451,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MN5S8CDSSL;
 				INFOPLIST_FILE = Team_Dave_Remote_Control_App_v2.0/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Students-6811.Team-Dave-Remote-Control-App-v2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -465,7 +467,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MN5S8CDSSL;
 				INFOPLIST_FILE = Team_Dave_Remote_Control_App_v2.0/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Students-6811.Team-Dave-Remote-Control-App-v2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
