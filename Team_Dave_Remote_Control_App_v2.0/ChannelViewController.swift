@@ -45,11 +45,14 @@ class ChannelViewController: UIViewController {
     // Channel Input
     var channel_val = Int();
     @IBOutlet weak var channel_input: UILabel!
+    @IBOutlet weak var currentChannel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        updateCurrentChannel()
         
         // Button Color In
         button_one.backgroundColor = blue;
@@ -92,6 +95,10 @@ class ChannelViewController: UIViewController {
         // Slider Gesture Recognition
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
         self.slider.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func updateCurrentChannel() {
+        currentChannel.text = UserDefaults.standard.string(forKey: "CurrentChannel")
     }
     
     // Volume
@@ -181,6 +188,9 @@ class ChannelViewController: UIViewController {
     }
     
     @IBAction func input_enter(_ sender: UIButton) {
+        UserDefaults.standard.set(channel_input.text, forKey: "CurrentChannel")
+        UserDefaults.standard.synchronize()
+        updateCurrentChannel()
         channel_val = 0;
         channel_input.text = String(channel_val);
     }
@@ -189,12 +199,5 @@ class ChannelViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        let presetVC = segue.destination as! ViewController
-//        presetVC.receivedString = "" // dummy string
-//    }
 
 }

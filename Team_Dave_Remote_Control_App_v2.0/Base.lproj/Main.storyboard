@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -221,10 +221,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Ch: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9T-Nd-8PP">
-                                <rect key="frame" x="520" y="160" width="250" height="70"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nj-rd-eNZ">
+                                <rect key="frame" x="815" y="160" width="150" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Ch: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9T-Nd-8PP">
+                                <rect key="frame" x="570" y="160" width="250" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -244,6 +251,7 @@
                         <outlet property="Outlet9" destination="dww-K8-RIs" id="FgT-wK-BqT"/>
                         <outlet property="changeOutlet" destination="UiG-pl-e1l" id="pVX-4N-iaa"/>
                         <outlet property="channelOutlet" destination="cxK-f0-1A2" id="HBb-KN-zc0"/>
+                        <outlet property="currentChannel" destination="1nj-rd-eNZ" id="5ca-Rk-luC"/>
                         <outlet property="down_button" destination="gsC-l5-WaL" id="v8E-Um-zA2"/>
                         <outlet property="slider" destination="IhF-y6-WFt" id="oXs-di-0PJ"/>
                         <outlet property="up_button" destination="doE-58-AMW" id="sQO-hQ-5SD"/>
@@ -694,6 +702,20 @@
                                     <action selector="sliderSlide:" destination="H0s-L7-C3x" eventType="valueChanged" id="42m-pb-CBy"/>
                                 </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Ch:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-UT-7HX">
+                                <rect key="frame" x="158" y="155" width="250" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sba-om-eKY">
+                                <rect key="frame" x="387" y="156" width="150" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="9Eq-l2-rK3"/>
@@ -712,6 +734,7 @@
                         <outlet property="button_two" destination="IpN-OB-KsV" id="Bvh-ye-GFW"/>
                         <outlet property="button_zero" destination="pMB-MC-zJs" id="Y1V-36-mv8"/>
                         <outlet property="channel_input" destination="Y5N-P9-Os0" id="Y3l-y4-HXf"/>
+                        <outlet property="currentChannel" destination="Sba-om-eKY" id="ySU-TH-naq"/>
                         <outlet property="down_button" destination="LNC-1V-UR2" id="OXR-0a-2am"/>
                         <outlet property="on_off" destination="Zly-H2-k7g" id="lpA-9E-j41"/>
                         <outlet property="preset" destination="Gjm-ag-hsJ" id="vFN-cG-3qx"/>

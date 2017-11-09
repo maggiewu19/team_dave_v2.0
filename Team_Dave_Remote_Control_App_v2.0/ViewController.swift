@@ -18,6 +18,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // current channel
+        updateCurrentChannel();
+        
         // set title for all presets by retrieving from UserDefaults
         Outlet1.setTitle(UserDefaults.standard.string(forKey: "Outlet1"), for: .normal)
         Outlet2.setTitle(UserDefaults.standard.string(forKey: "Outlet2"), for: .normal)
@@ -69,6 +72,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func updateCurrentChannel() {
+        currentChannel.text = UserDefaults.standard.string(forKey: "CurrentChannel")
+    }
+    
     // volume
     @IBOutlet weak var volume: UILabel!
     @IBOutlet weak var slider: UISlider!
@@ -76,6 +83,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var down_button: UIButton!
     
     // other buttons
+    @IBOutlet weak var currentChannel: UILabel!
     @IBOutlet weak var channelOutlet: UIButton!
     @IBOutlet weak var changeOutlet: UIButton!
     
@@ -150,6 +158,9 @@ class ViewController: UIViewController {
         if Outlet1.backgroundColor == red {
             ViewController.currentPreset = 1
         } else {
+            UserDefaults.standard.set(Outlet1.titleLabel?.text, forKey: "CurrentChannel")
+            UserDefaults.standard.synchronize()
+            updateCurrentChannel()
             // switch channel to preset
         }
     }
@@ -158,7 +169,9 @@ class ViewController: UIViewController {
         if Outlet2.backgroundColor == red {
             ViewController.currentPreset = 2
         } else {
-            
+            UserDefaults.standard.set(Outlet2.titleLabel?.text, forKey: "CurrentChannel")
+            UserDefaults.standard.synchronize()
+            updateCurrentChannel()
         }
     }
     
@@ -166,7 +179,9 @@ class ViewController: UIViewController {
         if Outlet3.backgroundColor == red {
             ViewController.currentPreset = 3
         } else {
-            
+            UserDefaults.standard.set(Outlet3.titleLabel?.text, forKey: "CurrentChannel")
+            UserDefaults.standard.synchronize()
+            updateCurrentChannel()
         }
     }
     
@@ -174,7 +189,9 @@ class ViewController: UIViewController {
         if Outlet4.backgroundColor == red {
             ViewController.currentPreset = 4
         } else {
-            
+            UserDefaults.standard.set(Outlet4.titleLabel?.text, forKey: "CurrentChannel")
+            UserDefaults.standard.synchronize()
+            updateCurrentChannel()
         }
     }
     
@@ -182,7 +199,9 @@ class ViewController: UIViewController {
         if Outlet5.backgroundColor == red {
             ViewController.currentPreset = 5
         } else {
-            
+            UserDefaults.standard.set(Outlet5.titleLabel?.text, forKey: "CurrentChannel")
+            UserDefaults.standard.synchronize()
+            updateCurrentChannel()
         }
     }
     
@@ -190,7 +209,9 @@ class ViewController: UIViewController {
         if Outlet6.backgroundColor == red {
             ViewController.currentPreset = 6
         } else {
-            
+            UserDefaults.standard.set(Outlet6.titleLabel?.text, forKey: "CurrentChannel")
+            UserDefaults.standard.synchronize()
+            updateCurrentChannel()
         }
     }
     
@@ -198,7 +219,9 @@ class ViewController: UIViewController {
         if Outlet7.backgroundColor == red {
             ViewController.currentPreset = 7
         } else {
-            
+            UserDefaults.standard.set(Outlet7.titleLabel?.text, forKey: "CurrentChannel")
+            UserDefaults.standard.synchronize()
+            updateCurrentChannel()
         }
     }
     
@@ -206,7 +229,9 @@ class ViewController: UIViewController {
         if Outlet8.backgroundColor == red {
             ViewController.currentPreset = 8
         } else {
-            
+            UserDefaults.standard.set(Outlet8.titleLabel?.text, forKey: "CurrentChannel")
+            UserDefaults.standard.synchronize()
+            updateCurrentChannel()
         }
     }
     
@@ -214,7 +239,9 @@ class ViewController: UIViewController {
         if Outlet9.backgroundColor == red {
             ViewController.currentPreset = 9
         } else {
-            
+            UserDefaults.standard.set(Outlet9.titleLabel?.text, forKey: "CurrentChannel")
+            UserDefaults.standard.synchronize()
+            updateCurrentChannel()
         }
     }
     
