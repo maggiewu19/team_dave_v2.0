@@ -316,7 +316,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQb-b9-KhD">
                                 <rect key="frame" x="80" y="580" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.61391064299999998" green="0.87439710920000002" blue="1" alpha="0.45958956870000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.45812022400000002" blue="0.34753871559999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="Del">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -328,7 +328,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4O-xH-Stt">
                                 <rect key="frame" x="80" y="240" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.61391064299999998" green="0.87439710920000002" blue="1" alpha="0.45958956870000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.70808417599999995" green="1" blue="0.55306191660000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="Ent">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -772,6 +772,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jH4-wm-K0x"/>
-        <segue reference="ifn-ND-3N1"/>
+        <segue reference="JTi-pO-bar"/>
     </inferredMetricsTieBreakers>
 </document>
