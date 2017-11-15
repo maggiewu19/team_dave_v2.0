@@ -31,6 +31,17 @@ class ChangePresetVCViewController: UIViewController {
         button9.layer.cornerRadius = 0.5 * button9.bounds.size.width;
         buttonEnt.layer.cornerRadius = 0.5 * buttonEnt.bounds.size.width;
         buttonDel.layer.cornerRadius = 0.5 * buttonDel.bounds.size.width;
+        
+        // Horizontal Slider
+        slider.transform = CGAffineTransform(rotationAngle: -(CGFloat(Double.pi/2)));
+        
+        // Volume
+        volume.text = String(Int(slider.value));
+        
+        // Slider Gesture Recognition
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
+        self.slider.addGestureRecognizer(tapGestureRecognizer)
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +49,22 @@ class ChangePresetVCViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // buttons
+    // Slider Gesture Recognition
+    @objc func sliderTapped(gestureRecognizer: UIGestureRecognizer) {
+        
+        let pointTapped: CGPoint = gestureRecognizer.location(in: self.view)
+        
+        let positionOfSlider: CGPoint = slider.frame.origin
+        let heightOfSlider: CGFloat = slider.frame.size.height
+        
+        let newValue = ((pointTapped.y - positionOfSlider.y) * CGFloat(slider.maximumValue) / heightOfSlider)
+        
+        let volume_value = Float(slider.maximumValue) - Float(newValue);
+        slider.setValue(volume_value, animated: true);
+        volume.text = String(Int(volume_value));
+    }
+    
+    // number buttons
     @IBOutlet weak var button0: UIButton!
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
@@ -52,8 +78,31 @@ class ChangePresetVCViewController: UIViewController {
     @IBOutlet weak var buttonEnt: UIButton!
     @IBOutlet weak var buttonDel: UIButton!
     
+    // volume buttons
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var volume: UILabel!
+    @IBOutlet weak var up_button: UIButton!
+    @IBOutlet weak var down_button: UIButton!
+    @IBOutlet weak var volume_max: UILabel!
+    @IBOutlet weak var volume_min: UILabel!
+    
     // label for preset
     @IBOutlet weak var presetInput: UILabel!
+    
+    @IBAction func sliderSlide(_ sender: UISlider) {
+        volume.text = String(Int(slider.value));
+    }
+    
+    @IBAction func volumeUp(_ sender: UIButton) {
+        slider.value = slider.value + 1;
+        volume.text = String(Int(slider.value));
+    }
+    
+    @IBAction func volumeDown(_ sender: UIButton) {
+        slider.value = slider.value - 1;
+        volume.text = String(Int(slider.value));
+    }
+    
     
     var inputVal = 0;
     
