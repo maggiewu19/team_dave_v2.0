@@ -168,8 +168,10 @@ class ViewController: UIViewController {
         
         let volume_value = Float(slider.maximumValue) - Float(newValue);
         slider.setValue(volume_value, animated: true);
+        let currentV = volume.text;
         volume.text = String(Int(volume_value));
         UserDefaults.standard.set(volume.text, forKey: "volume");
+        apiManager.volume(currentVol: currentV!, newVol: volume.text!);
     }
     
     @IBAction func power(_ sender: UIButton) {
@@ -203,6 +205,8 @@ class ViewController: UIViewController {
             UserDefaults.standard.synchronize()
             updateCurrentChannel()
             // switch channel to preset
+            let newChannel = Outlet1.titleLabel?.text;
+            apiManager.channel(channel: newChannel!)
         }
     }
     
@@ -213,6 +217,8 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(Outlet2.titleLabel?.text, forKey: "CurrentChannel")
             UserDefaults.standard.synchronize()
             updateCurrentChannel()
+            let newChannel = Outlet2.titleLabel?.text;
+            apiManager.channel(channel: newChannel!)
         }
     }
     
@@ -223,6 +229,8 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(Outlet3.titleLabel?.text, forKey: "CurrentChannel")
             UserDefaults.standard.synchronize()
             updateCurrentChannel()
+            let newChannel = Outlet3.titleLabel?.text;
+            apiManager.channel(channel: newChannel!)
         }
     }
     
@@ -233,6 +241,8 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(Outlet4.titleLabel?.text, forKey: "CurrentChannel")
             UserDefaults.standard.synchronize()
             updateCurrentChannel()
+            let newChannel = Outlet4.titleLabel?.text;
+            apiManager.channel(channel: newChannel!)
         }
     }
     
@@ -243,6 +253,8 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(Outlet5.titleLabel?.text, forKey: "CurrentChannel")
             UserDefaults.standard.synchronize()
             updateCurrentChannel()
+            let newChannel = Outlet5.titleLabel?.text;
+            apiManager.channel(channel: newChannel!)
         }
     }
     
@@ -253,6 +265,8 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(Outlet6.titleLabel?.text, forKey: "CurrentChannel")
             UserDefaults.standard.synchronize()
             updateCurrentChannel()
+            let newChannel = Outlet6.titleLabel?.text;
+            apiManager.channel(channel: newChannel!)
         }
     }
     
@@ -263,6 +277,8 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(Outlet7.titleLabel?.text, forKey: "CurrentChannel")
             UserDefaults.standard.synchronize()
             updateCurrentChannel()
+            let newChannel = Outlet7.titleLabel?.text;
+            apiManager.channel(channel: newChannel!)
         }
     }
     
@@ -273,6 +289,8 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(Outlet8.titleLabel?.text, forKey: "CurrentChannel")
             UserDefaults.standard.synchronize()
             updateCurrentChannel()
+            let newChannel = Outlet8.titleLabel?.text;
+            apiManager.channel(channel: newChannel!)
         }
     }
     
@@ -283,6 +301,8 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(Outlet9.titleLabel?.text, forKey: "CurrentChannel")
             UserDefaults.standard.synchronize()
             updateCurrentChannel()
+            let newChannel = Outlet9.titleLabel?.text;
+            apiManager.channel(channel: newChannel!)
         }
     }
     
