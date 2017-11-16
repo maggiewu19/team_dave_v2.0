@@ -19,6 +19,11 @@ class ViewController: UIViewController {
     
     let apiManager = APIManager();
     
+    // UIImage
+    let min_track = UIImage(named: "min_track.png");
+    let max_track = UIImage(named: "max_track.png");
+    
+    
     static var currentPreset = Int()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +95,10 @@ class ViewController: UIViewController {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
         self.slider.addGestureRecognizer(tapGestureRecognizer)
+        
+        // Image
+        self.slider.setMaximumTrackImage(max_track, for: UIControlState.normal)
+        self.slider.setMinimumTrackImage(min_track, for: UIControlState.normal)
         
     }
 
