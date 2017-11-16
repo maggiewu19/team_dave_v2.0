@@ -42,6 +42,12 @@ class ChannelViewController: UIViewController {
     let green = UIColor(red: 0/255, green: 225/255, blue: 0/255, alpha: 1);
     let red = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1);
     
+    // UIImage
+    let min_track = UIImage(named: "min_track.png");
+    let max_track = UIImage(named: "max_track.png");
+    
+    
+    
     // Channel Input
     var channel_val = Int();
     @IBOutlet weak var channel_input: UILabel!
@@ -95,6 +101,10 @@ class ChannelViewController: UIViewController {
         // Slider Gesture Recognition
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
         self.slider.addGestureRecognizer(tapGestureRecognizer)
+        
+        // Image
+        self.slider.setMaximumTrackImage(max_track, for: UIControlState.normal)
+        self.slider.setMinimumTrackImage(min_track, for: UIControlState.normal)
     }
     
     func updateCurrentChannel() {
