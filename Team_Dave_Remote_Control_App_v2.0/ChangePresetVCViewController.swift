@@ -32,6 +32,25 @@ class ChangePresetVCViewController: UIViewController {
         buttonEnt.layer.cornerRadius = 0.5 * buttonEnt.bounds.size.width;
         buttonDel.layer.cornerRadius = 0.5 * buttonDel.bounds.size.width;
         
+        // button colors
+        // Button Color In
+        button1.backgroundColor = blue;
+        button2.backgroundColor = blue;
+        button3.backgroundColor = blue;
+        button4.backgroundColor = blue;
+        button5.backgroundColor = blue;
+        button6.backgroundColor = blue;
+        button7.backgroundColor = blue;
+        button8.backgroundColor = blue;
+        button9.backgroundColor = blue;
+        button0.backgroundColor = blue;
+        buttonEnt.backgroundColor = green;
+        buttonDel.backgroundColor = red;
+        
+        sectionTop.backgroundColor = blue;
+        sectionLeft.backgroundColor = left;
+        sectionRight.backgroundColor = right;
+        
         // Horizontal Slider
         slider.transform = CGAffineTransform(rotationAngle: -(CGFloat(Double.pi/2)));
         
@@ -64,6 +83,15 @@ class ChangePresetVCViewController: UIViewController {
         volume.text = String(Int(volume_value));
     }
     
+    // Color
+    let blue = UIColor(red: 52/255, green: 77/255, blue: 144/255, alpha: 0.65);
+    let green = UIColor(red: 95/255, green: 185/255, blue: 142/255, alpha: 1);
+    let red = UIColor(red: 245/255, green: 84/255, blue: 73/255, alpha: 1);
+    let test = UIColor(red: 231/255, green: 201/255, blue: 177/255, alpha: 1);
+    let left = UIColor(red: 191/255, green: 220/255, blue: 207/255, alpha: 1);
+    let right = UIColor(red: 213/255, green: 201/255, blue: 177/255, alpha: 1);
+    
+    
     // number buttons
     @IBOutlet weak var button0: UIButton!
     @IBOutlet weak var button1: UIButton!
@@ -85,6 +113,11 @@ class ChangePresetVCViewController: UIViewController {
     @IBOutlet weak var down_button: UIButton!
     @IBOutlet weak var volume_max: UILabel!
     @IBOutlet weak var volume_min: UILabel!
+    
+    // sections
+    @IBOutlet weak var sectionTop: UILabel!
+    @IBOutlet weak var sectionLeft: UILabel!
+    @IBOutlet weak var sectionRight: UILabel!
     
     // label for preset
     @IBOutlet weak var presetInput: UILabel!
