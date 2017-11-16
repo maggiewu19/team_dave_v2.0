@@ -14,7 +14,8 @@ class APIManager {
     
     func power(volume: String) {
         // setup the session to make POST call
-        let postEndpoint: String = ip + "power?params=" + volume
+        let param = "?params=" + volume
+        let postEndpoint: String = ip + "power" + param
         let url = URL(string: postEndpoint)!
         let session = URLSession.shared
         let postParams : [String: Any] = ["return_value": 1,
@@ -45,13 +46,73 @@ class APIManager {
         task.resume()
     }
     
-//    func channel {
-//
-//    }
-//
-    
-    func volume() {
+    func channel(channel: String) {
+        // setup the session to make POST call
+        let param = "?params=" + channel
+        let postEndpoint: String = ip + "channel" + param
+        let url = URL(string: postEndpoint)!
+        let session = URLSession.shared
+        let postParams : [String: Any] = ["return_value": 1,
+                                          "id": "",
+                                          "name": "",
+                                          "hardware": "esp8266",
+                                          "connected": true]
         
+        // create the request
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: postParams, options: [])
+        } catch {
+            print("Error: cannot create JSON from postParams")
+        }
+        
+        // make the POST call
+        let task = session.dataTask(with: request) {
+            (data, response, error) in
+            guard error == nil else {
+                print ("Error calling POST on channel")
+                print (error as Any)
+                return
+            }
+            return
+        }
+        task.resume()
+    }
+
+    
+    func volume(currentVol: String, newVol: String) {
+        // setup the session to make POST call
+        let param = "?params=" + "[" + currentVol + "," + newVol + "]";
+        let postEndpoint: String = ip + "volume" + param
+        let url = URL(string: postEndpoint)!
+        let session = URLSession.shared
+        let postParams : [String: Any] = ["return_value": 1,
+                                          "id": "",
+                                          "name": "",
+                                          "hardware": "esp8266",
+                                          "connected": true]
+        
+        // create the request
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: postParams, options: [])
+        } catch {
+            print("Error: cannot create JSON from postParams")
+        }
+        
+        // make the POST call
+        let task = session.dataTask(with: request) {
+            (data, response, error) in
+            guard error == nil else {
+                print ("Error calling POST on volume")
+                print (error as Any)
+                return
+            }
+            return
+        }
+        task.resume()
     }
 
     func volumeUp() {

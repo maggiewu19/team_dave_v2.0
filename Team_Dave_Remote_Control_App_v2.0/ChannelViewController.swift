@@ -137,8 +137,10 @@ class ChannelViewController: UIViewController {
         
         let volume_value = Float(slider.maximumValue) - Float(newValue);
         slider.setValue(volume_value, animated: true);
+        let currentV = volume.text;
         volume.text = String(Int(volume_value));
         UserDefaults.standard.set(volume.text, forKey: "volume");
+        apiManager.volume(currentVol: currentV!, newVol: volume.text!)
     }
     
     @IBAction func volumeUp(_ sender: UIButton) {
@@ -222,6 +224,7 @@ class ChannelViewController: UIViewController {
         updateCurrentChannel()
         channel_val = 0;
         channel_input.text = String(channel_val);
+        apiManager.channel(channel: channel_input.text!);
     }
     
     override func didReceiveMemoryWarning() {
