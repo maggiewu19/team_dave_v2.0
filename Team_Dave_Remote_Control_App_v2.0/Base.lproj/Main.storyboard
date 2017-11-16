@@ -796,6 +796,9 @@
                                 <rect key="frame" x="300" y="30" width="80" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="on_off.png"/>
+                                <connections>
+                                    <action selector="power:" destination="H0s-L7-C3x" eventType="touchUpInside" id="H5R-rB-Wm5"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAb-rp-Uh0">
                                 <rect key="frame" x="200" y="370" width="180" height="90"/>

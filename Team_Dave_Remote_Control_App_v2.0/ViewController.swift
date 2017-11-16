@@ -17,7 +17,18 @@ class ViewController: UIViewController {
     let left = UIColor(red: 191/255, green: 220/255, blue: 207/255, alpha: 1);
     let right = UIColor(red: 213/255, green: 201/255, blue: 177/255, alpha: 1);
     
+    let apiManager = APIManager();
+    
     static var currentPreset = Int()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        var sliderVal = UserDefaults.standard.string(forKey: "volume");
+        if (sliderVal == nil) {
+            sliderVal = "10"
+        }
+        volume.text = sliderVal;
+        slider.value = NumberFormatter().number(from: sliderVal!) as! Float
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +78,14 @@ class ViewController: UIViewController {
         sectionRight.backgroundColor = right;
         
         // volume
-        volume.text = String (Int(slider.value));
+//        volume.text = String (Int(slider.value));
+        var sliderVal = UserDefaults.standard.string(forKey: "volume");
+        if (sliderVal == nil) {
+            sliderVal = "10"
+        }
+        volume.text = sliderVal;
+        slider.value = NumberFormatter().number(from: sliderVal!) as! Float
+        
         slider.transform = CGAffineTransform(rotationAngle: -(CGFloat(Double.pi/2)));
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
@@ -151,23 +169,30 @@ class ViewController: UIViewController {
         let volume_value = Float(slider.maximumValue) - Float(newValue);
         slider.setValue(volume_value, animated: true);
         volume.text = String(Int(volume_value));
+        UserDefaults.standard.set(volume.text, forKey: "volume");
     }
     
     @IBAction func power(_ sender: UIButton) {
-        APIManager().power();
+        let prevVolume = UserDefaults.standard.string(forKey: "volume")
+        apiManager.power(volume: prevVolume!);
     }
     @IBAction func sliderSlid(_ sender: UISlider) {
         volume.text = String (Int(slider.value));
+        UserDefaults.standard.set(volume.text, forKey: "volume")
     }
     
     @IBAction func upAdjust(_ sender: UIButton) {
         slider.value = slider.value + 1;
         volume.text = String(Int(slider.value));
+        UserDefaults.standard.set(volume.text, forKey: "volume")
+        apiManager.volumeUp();
     }
     
     @IBAction func downAdjust(_ sender: UIButton) {
         slider.value = slider.value - 1;
         volume.text = String(Int(slider.value));
+        UserDefaults.standard.set(volume.text, forKey: "volume")
+        apiManager.volumeDown();
     }
     
     @IBAction func Preset1(_ sender: Any) {
