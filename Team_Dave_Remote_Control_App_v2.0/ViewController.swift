@@ -10,8 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let blue = UIColor(red: 157/255, green: 223/255, blue: 255/255, alpha: 1);
-    let red = UIColor(red: 255/255, green: 119/255, blue: 121/255, alpha: 1);
+    let blue = UIColor(red: 52/255, green: 77/255, blue: 144/255, alpha: 0.65);
+    let green = UIColor(red: 95/255, green: 185/255, blue: 142/255, alpha: 1);
+    let red = UIColor(red: 245/255, green: 84/255, blue: 73/255, alpha: 1);
+    let test = UIColor(red: 231/255, green: 201/255, blue: 177/255, alpha: 1);
+    let left = UIColor(red: 191/255, green: 220/255, blue: 207/255, alpha: 1);
+    let right = UIColor(red: 213/255, green: 201/255, blue: 177/255, alpha: 1);
     
     static var currentPreset = Int()
     
@@ -58,6 +62,10 @@ class ViewController: UIViewController {
         Outlet8.backgroundColor = blue
         Outlet9.backgroundColor = blue
         
+        sectionTop.backgroundColor = blue;
+        sectionLeft.backgroundColor = left;
+        sectionRight.backgroundColor = right;
+        
         // volume
         volume.text = String (Int(slider.value));
         slider.transform = CGAffineTransform(rotationAngle: -(CGFloat(Double.pi/2)));
@@ -86,6 +94,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var currentChannel: UILabel!
     @IBOutlet weak var channelOutlet: UIButton!
     @IBOutlet weak var changeOutlet: UIButton!
+    
+    // sections
+    @IBOutlet weak var sectionTop: UILabel!
+    @IBOutlet weak var sectionLeft: UILabel!
+    @IBOutlet weak var sectionRight: UILabel!
     
     // presets
     @IBOutlet weak var Outlet1: UIButton!
@@ -140,6 +153,9 @@ class ViewController: UIViewController {
         volume.text = String(Int(volume_value));
     }
     
+    @IBAction func power(_ sender: UIButton) {
+        APIManager().power();
+    }
     @IBAction func sliderSlid(_ sender: UISlider) {
         volume.text = String (Int(slider.value));
     }

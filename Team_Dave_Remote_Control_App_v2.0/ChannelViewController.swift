@@ -36,11 +36,19 @@ class ChannelViewController: UIViewController {
     @IBOutlet weak var volume_max: UILabel!
     @IBOutlet weak var volume_min: UILabel!
     
+    // sections
+    
+    @IBOutlet weak var sectionTop: UILabel!
+    @IBOutlet weak var sectionLeft: UILabel!
+    @IBOutlet weak var sectionRight: UILabel!
     
     // Color
-    let blue = UIColor(red: 157/255, green: 223/255, blue: 255/255, alpha: 1);
-    let green = UIColor(red: 0/255, green: 225/255, blue: 0/255, alpha: 1);
-    let red = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1);
+    let blue = UIColor(red: 52/255, green: 77/255, blue: 144/255, alpha: 0.65);
+    let green = UIColor(red: 95/255, green: 185/255, blue: 142/255, alpha: 1);
+    let red = UIColor(red: 245/255, green: 84/255, blue: 73/255, alpha: 1);
+    let test = UIColor(red: 231/255, green: 201/255, blue: 177/255, alpha: 1);
+    let left = UIColor(red: 191/255, green: 220/255, blue: 207/255, alpha: 1);
+    let right = UIColor(red: 213/255, green: 201/255, blue: 177/255, alpha: 1);
     
     // Channel Input
     var channel_val = Int();
@@ -68,7 +76,10 @@ class ChannelViewController: UIViewController {
         button_enter.backgroundColor = green;
         button_delete.backgroundColor = red;
         
-        preset.backgroundColor = blue;
+        preset.backgroundColor = test;
+        sectionTop.backgroundColor = blue;
+        sectionLeft.backgroundColor = left;
+        sectionRight.backgroundColor = right;
         
         // Button Round Corner
         button_one.layer.cornerRadius = 0.5 * button_one.bounds.size.width;
