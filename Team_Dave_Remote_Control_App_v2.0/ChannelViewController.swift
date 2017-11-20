@@ -231,10 +231,10 @@ class ChannelViewController: UIViewController {
     @IBAction func input_enter(_ sender: UIButton) {
         UserDefaults.standard.set(channel_input.text, forKey: "CurrentChannel")
         UserDefaults.standard.synchronize()
+        apiManager.channel(channel: channel_input.text!);
         updateCurrentChannel()
         channel_val = 0;
         channel_input.text = String(channel_val);
-        apiManager.channel(channel: channel_input.text!);
     }
     
     override func didReceiveMemoryWarning() {

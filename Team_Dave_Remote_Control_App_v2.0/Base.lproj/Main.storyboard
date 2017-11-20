@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -481,6 +481,9 @@
                                 <rect key="frame" x="200" y="30" width="80" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="POWER" image="on_off.png"/>
+                                <connections>
+                                    <action selector="power:" destination="Tfv-ya-G6L" eventType="touchUpInside" id="5Pf-Kj-OQ6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8I-z2-qY9">
                                 <rect key="frame" x="65" y="30" width="90" height="90"/>
@@ -917,6 +920,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jH4-wm-K0x"/>
-        <segue reference="ifn-ND-3N1"/>
+        <segue reference="JTi-pO-bar"/>
     </inferredMetricsTieBreakers>
 </document>
