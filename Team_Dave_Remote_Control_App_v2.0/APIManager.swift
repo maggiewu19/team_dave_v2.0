@@ -10,7 +10,10 @@ import Foundation
 
 class APIManager {
     
-    var ip = "http://18.24.1.249/"
+//    var ip = "http://18.24.1.249/"
+    
+    // The Boston Home
+    var ip = "http://10.0.4.56/"
     
     func power(volume: String) {
         // setup the session to make POST call
@@ -117,7 +120,7 @@ class APIManager {
 
     func volumeUp() {
         // setup the session to make POST call
-        let postEndpoint: String = ip + "volumeUp"
+        let postEndpoint: String = ip + "volumeup"
         let url = URL(string: postEndpoint)!
         let session = URLSession.shared
         let postParams : [String: Any] = ["return_value": 1,

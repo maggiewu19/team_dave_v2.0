@@ -139,6 +139,12 @@ class ChangePresetVCViewController: UIViewController {
     // label for preset
     @IBOutlet weak var presetInput: UILabel!
     
+    @IBAction func power(_ sender: UIButton) {
+        let prevVolume = UserDefaults.standard.string(forKey: "volume")
+        apiManager.power(volume: prevVolume!);
+    }
+    
+    
     @IBAction func sliderSlide(_ sender: UISlider) {
         volume.text = String(Int(slider.value));
         UserDefaults.standard.set(volume.text, forKey: "volume");

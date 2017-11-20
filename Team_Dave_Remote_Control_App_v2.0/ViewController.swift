@@ -210,12 +210,13 @@ class ViewController: UIViewController {
         if Outlet1.backgroundColor == red {
             ViewController.currentPreset = 1
         } else {
-            UserDefaults.standard.set(Outlet1.titleLabel?.text, forKey: "CurrentChannel")
-            UserDefaults.standard.synchronize()
-            updateCurrentChannel()
-            // switch channel to preset
             let newChannel = Outlet1.titleLabel?.text;
-            apiManager.channel(channel: newChannel!)
+            if (newChannel != nil) {
+                UserDefaults.standard.set(Outlet1.titleLabel?.text, forKey: "CurrentChannel")
+                UserDefaults.standard.synchronize()
+                updateCurrentChannel()
+                apiManager.channel(channel: newChannel!)
+            }
         }
     }
     
@@ -223,11 +224,13 @@ class ViewController: UIViewController {
         if Outlet2.backgroundColor == red {
             ViewController.currentPreset = 2
         } else {
-            UserDefaults.standard.set(Outlet2.titleLabel?.text, forKey: "CurrentChannel")
-            UserDefaults.standard.synchronize()
-            updateCurrentChannel()
             let newChannel = Outlet2.titleLabel?.text;
-            apiManager.channel(channel: newChannel!)
+            if (newChannel != nil) {
+                UserDefaults.standard.set(Outlet2.titleLabel?.text, forKey: "CurrentChannel")
+                UserDefaults.standard.synchronize()
+                updateCurrentChannel()
+                apiManager.channel(channel: newChannel!)
+            }
         }
     }
     
@@ -235,11 +238,13 @@ class ViewController: UIViewController {
         if Outlet3.backgroundColor == red {
             ViewController.currentPreset = 3
         } else {
-            UserDefaults.standard.set(Outlet3.titleLabel?.text, forKey: "CurrentChannel")
-            UserDefaults.standard.synchronize()
-            updateCurrentChannel()
             let newChannel = Outlet3.titleLabel?.text;
-            apiManager.channel(channel: newChannel!)
+            if (newChannel != nil) {
+                UserDefaults.standard.set(Outlet3.titleLabel?.text, forKey: "CurrentChannel")
+                UserDefaults.standard.synchronize()
+                updateCurrentChannel()
+                apiManager.channel(channel: newChannel!)
+            }
         }
     }
     
@@ -247,11 +252,13 @@ class ViewController: UIViewController {
         if Outlet4.backgroundColor == red {
             ViewController.currentPreset = 4
         } else {
-            UserDefaults.standard.set(Outlet4.titleLabel?.text, forKey: "CurrentChannel")
-            UserDefaults.standard.synchronize()
-            updateCurrentChannel()
             let newChannel = Outlet4.titleLabel?.text;
-            apiManager.channel(channel: newChannel!)
+            if (newChannel != nil) {
+                UserDefaults.standard.set(Outlet4.titleLabel?.text, forKey: "CurrentChannel")
+                UserDefaults.standard.synchronize()
+                updateCurrentChannel()
+                apiManager.channel(channel: newChannel!)
+            }
         }
     }
     
@@ -259,11 +266,13 @@ class ViewController: UIViewController {
         if Outlet5.backgroundColor == red {
             ViewController.currentPreset = 5
         } else {
-            UserDefaults.standard.set(Outlet5.titleLabel?.text, forKey: "CurrentChannel")
-            UserDefaults.standard.synchronize()
-            updateCurrentChannel()
             let newChannel = Outlet5.titleLabel?.text;
-            apiManager.channel(channel: newChannel!)
+            if (newChannel != nil) {
+                UserDefaults.standard.set(Outlet5.titleLabel?.text, forKey: "CurrentChannel")
+                UserDefaults.standard.synchronize()
+                updateCurrentChannel()
+                apiManager.channel(channel: newChannel!)
+            }
         }
     }
     
@@ -271,11 +280,13 @@ class ViewController: UIViewController {
         if Outlet6.backgroundColor == red {
             ViewController.currentPreset = 6
         } else {
-            UserDefaults.standard.set(Outlet6.titleLabel?.text, forKey: "CurrentChannel")
-            UserDefaults.standard.synchronize()
-            updateCurrentChannel()
             let newChannel = Outlet6.titleLabel?.text;
-            apiManager.channel(channel: newChannel!)
+            if (newChannel != nil) {
+                UserDefaults.standard.set(Outlet6.titleLabel?.text, forKey: "CurrentChannel")
+                UserDefaults.standard.synchronize()
+                updateCurrentChannel()
+                apiManager.channel(channel: newChannel!)
+            }
         }
     }
     
@@ -283,11 +294,13 @@ class ViewController: UIViewController {
         if Outlet7.backgroundColor == red {
             ViewController.currentPreset = 7
         } else {
-            UserDefaults.standard.set(Outlet7.titleLabel?.text, forKey: "CurrentChannel")
-            UserDefaults.standard.synchronize()
-            updateCurrentChannel()
             let newChannel = Outlet7.titleLabel?.text;
-            apiManager.channel(channel: newChannel!)
+            if (newChannel != nil) {
+                UserDefaults.standard.set(Outlet7.titleLabel?.text, forKey: "CurrentChannel")
+                UserDefaults.standard.synchronize()
+                updateCurrentChannel()
+                apiManager.channel(channel: newChannel!)
+            }
         }
     }
     
@@ -295,11 +308,13 @@ class ViewController: UIViewController {
         if Outlet8.backgroundColor == red {
             ViewController.currentPreset = 8
         } else {
-            UserDefaults.standard.set(Outlet8.titleLabel?.text, forKey: "CurrentChannel")
-            UserDefaults.standard.synchronize()
-            updateCurrentChannel()
             let newChannel = Outlet8.titleLabel?.text;
-            apiManager.channel(channel: newChannel!)
+            if (newChannel != nil) {
+                UserDefaults.standard.set(Outlet8.titleLabel?.text, forKey: "CurrentChannel")
+                UserDefaults.standard.synchronize()
+                updateCurrentChannel()
+                apiManager.channel(channel: newChannel!)
+            }
         }
     }
     
@@ -307,11 +322,13 @@ class ViewController: UIViewController {
         if Outlet9.backgroundColor == red {
             ViewController.currentPreset = 9
         } else {
-            UserDefaults.standard.set(Outlet9.titleLabel?.text, forKey: "CurrentChannel")
-            UserDefaults.standard.synchronize()
-            updateCurrentChannel()
             let newChannel = Outlet9.titleLabel?.text;
-            apiManager.channel(channel: newChannel!)
+            if (newChannel != nil) {
+                UserDefaults.standard.set(Outlet9.titleLabel?.text, forKey: "CurrentChannel")
+                UserDefaults.standard.synchronize()
+                updateCurrentChannel()
+                apiManager.channel(channel: newChannel!)
+            }
         }
     }
     
