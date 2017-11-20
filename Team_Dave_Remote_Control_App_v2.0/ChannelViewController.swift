@@ -10,7 +10,90 @@ import UIKit
 
 class ChannelViewController: UIViewController {
     
-    // Setup Buttons
+    let apiManager = APIManager();
+
+    // color vars
+    let blue = UIColor(red: 52/255, green: 77/255, blue: 144/255, alpha: 0.65);
+    let green = UIColor(red: 95/255, green: 185/255, blue: 142/255, alpha: 1);
+    let red = UIColor(red: 245/255, green: 84/255, blue: 73/255, alpha: 1);
+    let left = UIColor(red: 191/255, green: 220/255, blue: 207/255, alpha: 1);
+    let right = UIColor(red: 213/255, green: 201/255, blue: 177/255, alpha: 1);
+    
+    // UIImage for scrollbar
+    let min_track = UIImage(named: "min_track.png");
+    let max_track = UIImage(named: "max_track.png");
+    
+    var channel_val = Int();
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        updateCurrentChannel()
+        
+        // set button colors
+        button_one.backgroundColor = blue;
+        button_two.backgroundColor = blue;
+        button_three.backgroundColor = blue;
+        button_four.backgroundColor = blue;
+        button_five.backgroundColor = blue;
+        button_six.backgroundColor = blue;
+        button_seven.backgroundColor = blue;
+        button_eight.backgroundColor = blue;
+        button_nine.backgroundColor = blue;
+        button_zero.backgroundColor = blue;
+        button_enter.backgroundColor = green;
+        button_delete.backgroundColor = red;
+        preset.backgroundColor = right;
+        
+        // set section colors
+        sectionTop.backgroundColor = blue;
+        sectionLeft.backgroundColor = left;
+        sectionRight.backgroundColor = right;
+        
+        // make buttons circular
+        button_one.layer.cornerRadius = 0.5 * button_one.bounds.size.width;
+        button_two.layer.cornerRadius = 0.5 * button_two.bounds.size.width;
+        button_three.layer.cornerRadius = 0.5 * button_three.bounds.size.width;
+        button_four.layer.cornerRadius = 0.5 * button_four.bounds.size.width;
+        button_five.layer.cornerRadius = 0.5 * button_five.bounds.size.width;
+        button_six.layer.cornerRadius = 0.5 * button_six.bounds.size.width;
+        button_seven.layer.cornerRadius = 0.5 * button_seven.bounds.size.width;
+        button_eight.layer.cornerRadius = 0.5 * button_eight.bounds.size.width;
+        button_nine.layer.cornerRadius = 0.5 * button_nine.bounds.size.width;
+        button_zero.layer.cornerRadius = 0.5 * button_zero.bounds.size.width;
+        button_enter.layer.cornerRadius = 0.5 * button_enter.bounds.size.width;
+        button_delete.layer.cornerRadius = 0.5 * button_delete.bounds.size.width;
+        
+        // rounded corners
+        preset.layer.cornerRadius = 0.1 * preset.bounds.size.width;
+        
+        // Volume + slider
+        var sliderVal = UserDefaults.standard.string(forKey: "volume");
+        if (sliderVal == nil) {
+            sliderVal = "10"
+        }
+        volume.text = sliderVal;
+        slider.value = NumberFormatter().number(from: sliderVal!) as! Float
+        // make slider vertical
+        slider.transform = CGAffineTransform(rotationAngle: -(CGFloat(Double.pi/2)));
+        
+        // Slider Gesture Recognition
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
+        self.slider.addGestureRecognizer(tapGestureRecognizer)
+        
+        // Image for slider width
+        self.slider.setMaximumTrackImage(max_track, for: UIControlState.normal)
+        self.slider.setMinimumTrackImage(min_track, for: UIControlState.normal)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // OUTLETS
+    
+    // top section buttons
     @IBOutlet weak var preset: UIButton!
     @IBOutlet weak var on_off: UIButton!
     
@@ -28,7 +111,7 @@ class ChannelViewController: UIViewController {
     @IBOutlet weak var button_zero: UIButton!
     @IBOutlet weak var button_delete: UIButton!
     
-    // Volume Buttons
+    // Volume
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var volume: UILabel!
     @IBOutlet weak var up_button: UIButton!
@@ -37,102 +120,18 @@ class ChannelViewController: UIViewController {
     @IBOutlet weak var volume_min: UILabel!
     
     // sections
-    
     @IBOutlet weak var sectionTop: UILabel!
     @IBOutlet weak var sectionLeft: UILabel!
     @IBOutlet weak var sectionRight: UILabel!
     
-    // Color
-    let blue = UIColor(red: 52/255, green: 77/255, blue: 144/255, alpha: 0.65);
-    let green = UIColor(red: 95/255, green: 185/255, blue: 142/255, alpha: 1);
-    let red = UIColor(red: 245/255, green: 84/255, blue: 73/255, alpha: 1);
-    let test = UIColor(red: 231/255, green: 201/255, blue: 177/255, alpha: 1);
-    let left = UIColor(red: 191/255, green: 220/255, blue: 207/255, alpha: 1);
-    let right = UIColor(red: 213/255, green: 201/255, blue: 177/255, alpha: 1);
-    
-    let apiManager = APIManager();
-    
-    // UIImage
-    let min_track = UIImage(named: "min_track.png");
-    let max_track = UIImage(named: "max_track.png");
-    
-    
-    
     // Channel Input
-    var channel_val = Int();
     @IBOutlet weak var channel_input: UILabel!
     @IBOutlet weak var currentChannel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        updateCurrentChannel()
-        
-        // Button Color In
-        button_one.backgroundColor = blue;
-        button_two.backgroundColor = blue;
-        button_three.backgroundColor = blue;
-        button_four.backgroundColor = blue;
-        button_five.backgroundColor = blue;
-        button_six.backgroundColor = blue;
-        button_seven.backgroundColor = blue;
-        button_eight.backgroundColor = blue;
-        button_nine.backgroundColor = blue;
-        button_zero.backgroundColor = blue;
-        button_enter.backgroundColor = green;
-        button_delete.backgroundColor = red;
-        
-        preset.backgroundColor = test;
-        sectionTop.backgroundColor = blue;
-        sectionLeft.backgroundColor = left;
-        sectionRight.backgroundColor = right;
-        
-        // Button Round Corner
-        button_one.layer.cornerRadius = 0.5 * button_one.bounds.size.width;
-        button_two.layer.cornerRadius = 0.5 * button_two.bounds.size.width;
-        button_three.layer.cornerRadius = 0.5 * button_three.bounds.size.width;
-        button_four.layer.cornerRadius = 0.5 * button_four.bounds.size.width;
-        button_five.layer.cornerRadius = 0.5 * button_five.bounds.size.width;
-        button_six.layer.cornerRadius = 0.5 * button_six.bounds.size.width;
-        button_seven.layer.cornerRadius = 0.5 * button_seven.bounds.size.width;
-        button_eight.layer.cornerRadius = 0.5 * button_eight.bounds.size.width;
-        button_nine.layer.cornerRadius = 0.5 * button_nine.bounds.size.width;
-        button_zero.layer.cornerRadius = 0.5 * button_zero.bounds.size.width;
-        button_enter.layer.cornerRadius = 0.5 * button_enter.bounds.size.width;
-        button_delete.layer.cornerRadius = 0.5 * button_delete.bounds.size.width;
-        
-        preset.layer.cornerRadius = 0.1 * preset.bounds.size.width;
-        
-        // Horizontal Slider
-        slider.transform = CGAffineTransform(rotationAngle: -(CGFloat(Double.pi/2)));
-        
-        // Volume
-        var sliderVal = UserDefaults.standard.string(forKey: "volume");
-        if (sliderVal == nil) {
-            sliderVal = "10"
-        }
-        volume.text = sliderVal;
-        slider.value = NumberFormatter().number(from: sliderVal!) as! Float
-        
-        // Slider Gesture Recognition
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
-        self.slider.addGestureRecognizer(tapGestureRecognizer)
-        
-        // Image
-        self.slider.setMaximumTrackImage(max_track, for: UIControlState.normal)
-        self.slider.setMinimumTrackImage(min_track, for: UIControlState.normal)
-    }
+    // HELPER FUNCTIONS
     
     func updateCurrentChannel() {
         currentChannel.text = UserDefaults.standard.string(forKey: "CurrentChannel")
-    }
-    
-    // Volume
-    @IBAction func sliderSlide(_ sender: UISlider) {
-        volume.text = String(Int(slider.value));
-        UserDefaults.standard.set(volume.text, forKey: "volume")
     }
     
     // Slider Gesture Recognition
@@ -153,6 +152,24 @@ class ChannelViewController: UIViewController {
         apiManager.volume(currentVol: currentV!, newVol: volume.text!)
     }
     
+    // Channel
+    func channel_num(num: Int) -> Int {
+        if (channel_val == 0) {
+            channel_val = num;
+        }
+        else if (channel_val < 100) {
+            channel_val = channel_val*10 + num;
+        }
+        return channel_val;
+    }
+    
+    // ACTION FUNCTIONS
+    
+    @IBAction func sliderSlide(_ sender: UISlider) {
+        volume.text = String(Int(slider.value));
+        UserDefaults.standard.set(volume.text, forKey: "volume")
+    }
+    
     @IBAction func volumeUp(_ sender: UIButton) {
         slider.value = slider.value + 1;
         volume.text = String(Int(slider.value));
@@ -170,17 +187,6 @@ class ChannelViewController: UIViewController {
     @IBAction func power(_ sender: UIButton) {
         let prevVolume = UserDefaults.standard.string(forKey: "volume")
         apiManager.power(volume: prevVolume!);
-    }
-    
-    // Channel
-    func channel_num(num: Int) -> Int {
-        if (channel_val == 0) {
-            channel_val = num;
-        }
-        else if (channel_val < 100) {
-            channel_val = channel_val*10 + num;
-        }
-        return channel_val;
     }
     
     @IBAction func input_one(_ sender: UIButton) {
@@ -235,11 +241,6 @@ class ChannelViewController: UIViewController {
         updateCurrentChannel()
         channel_val = 0;
         channel_input.text = String(channel_val);
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }

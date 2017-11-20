@@ -9,13 +9,24 @@
 import UIKit
 
 class ChangePresetVCViewController: UIViewController {
-
+    
+    let apiManager = APIManager();
+    
+    // color vars
+    let blue = UIColor(red: 52/255, green: 77/255, blue: 144/255, alpha: 0.65);
+    let green = UIColor(red: 95/255, green: 185/255, blue: 142/255, alpha: 1);
+    let red = UIColor(red: 245/255, green: 84/255, blue: 73/255, alpha: 1);
+    let left = UIColor(red: 191/255, green: 220/255, blue: 207/255, alpha: 1);
+    let right = UIColor(red: 213/255, green: 201/255, blue: 177/255, alpha: 1);
+    
+    // UIImage for scrollbar
+    let min_track = UIImage(named: "min_track.png");
+    let max_track = UIImage(named: "max_track.png");
+    
     // this comes from the preset page, tells us where to save in UserDefaults
     var receivedPreset = ""
     
-    // UIImage
-    let min_track = UIImage(named: "min_track.png");
-    let max_track = UIImage(named: "max_track.png");
+    var inputVal = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +47,7 @@ class ChangePresetVCViewController: UIViewController {
         buttonEnt.layer.cornerRadius = 0.5 * buttonEnt.bounds.size.width;
         buttonDel.layer.cornerRadius = 0.5 * buttonDel.bounds.size.width;
         
-        // button colors
-        // Button Color In
+        // set button colors
         button1.backgroundColor = blue;
         button2.backgroundColor = blue;
         button3.backgroundColor = blue;
@@ -51,27 +61,26 @@ class ChangePresetVCViewController: UIViewController {
         buttonEnt.backgroundColor = green;
         buttonDel.backgroundColor = red;
         
+        // set section colors
         sectionTop.backgroundColor = blue;
         sectionLeft.backgroundColor = left;
         sectionRight.backgroundColor = right;
         
-        // Horizontal Slider
-        slider.transform = CGAffineTransform(rotationAngle: -(CGFloat(Double.pi/2)));
-        
-        // Volume
-//        volume.text = String(Int(slider.value));
+        // Volume + slider
         var sliderVal = UserDefaults.standard.string(forKey: "volume");
         if (sliderVal == nil) {
             sliderVal = "10"
         }
         volume.text = sliderVal;
         slider.value = NumberFormatter().number(from: sliderVal!) as! Float
+        // make slider vertical
+        slider.transform = CGAffineTransform(rotationAngle: -(CGFloat(Double.pi/2)));
         
         // Slider Gesture Recognition
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
         self.slider.addGestureRecognizer(tapGestureRecognizer)
         
-        // Image
+        // Image for slider width
         self.slider.setMaximumTrackImage(max_track, for: UIControlState.normal)
         self.slider.setMinimumTrackImage(min_track, for: UIControlState.normal)
     }
@@ -80,6 +89,40 @@ class ChangePresetVCViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // OUTLETS
+    
+    // number buttons
+    @IBOutlet weak var button0: UIButton!
+    @IBOutlet weak var button1: UIButton!
+    @IBOutlet weak var button2: UIButton!
+    @IBOutlet weak var button3: UIButton!
+    @IBOutlet weak var button4: UIButton!
+    @IBOutlet weak var button5: UIButton!
+    @IBOutlet weak var button6: UIButton!
+    @IBOutlet weak var button7: UIButton!
+    @IBOutlet weak var button8: UIButton!
+    @IBOutlet weak var button9: UIButton!
+    @IBOutlet weak var buttonEnt: UIButton!
+    @IBOutlet weak var buttonDel: UIButton!
+    
+    // volume
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var volume: UILabel!
+    @IBOutlet weak var up_button: UIButton!
+    @IBOutlet weak var down_button: UIButton!
+    @IBOutlet weak var volume_max: UILabel!
+    @IBOutlet weak var volume_min: UILabel!
+    
+    // sections
+    @IBOutlet weak var sectionTop: UILabel!
+    @IBOutlet weak var sectionLeft: UILabel!
+    @IBOutlet weak var sectionRight: UILabel!
+    
+    // label for preset
+    @IBOutlet weak var presetInput: UILabel!
+    
+    // HELPER FUNCTIONS
     
     // Slider Gesture Recognition
     @objc func sliderTapped(gestureRecognizer: UIGestureRecognizer) {
@@ -99,51 +142,22 @@ class ChangePresetVCViewController: UIViewController {
         apiManager.volume(currentVol: currentV!, newVol: volume.text!)
     }
     
-    // Color
-    let blue = UIColor(red: 52/255, green: 77/255, blue: 144/255, alpha: 0.65);
-    let green = UIColor(red: 95/255, green: 185/255, blue: 142/255, alpha: 1);
-    let red = UIColor(red: 245/255, green: 84/255, blue: 73/255, alpha: 1);
-    let test = UIColor(red: 231/255, green: 201/255, blue: 177/255, alpha: 1);
-    let left = UIColor(red: 191/255, green: 220/255, blue: 207/255, alpha: 1);
-    let right = UIColor(red: 213/255, green: 201/255, blue: 177/255, alpha: 1);
+    func preset_num(num: Int) -> Int {
+        if (inputVal == 0) {
+            inputVal = num;
+        }
+        else if (inputVal < 100) {
+            inputVal = inputVal*10 + num;
+        }
+        return inputVal;
+    }
     
-    let apiManager = APIManager();
-    
-    // number buttons
-    @IBOutlet weak var button0: UIButton!
-    @IBOutlet weak var button1: UIButton!
-    @IBOutlet weak var button2: UIButton!
-    @IBOutlet weak var button3: UIButton!
-    @IBOutlet weak var button4: UIButton!
-    @IBOutlet weak var button5: UIButton!
-    @IBOutlet weak var button6: UIButton!
-    @IBOutlet weak var button7: UIButton!
-    @IBOutlet weak var button8: UIButton!
-    @IBOutlet weak var button9: UIButton!
-    @IBOutlet weak var buttonEnt: UIButton!
-    @IBOutlet weak var buttonDel: UIButton!
-    
-    // volume buttons
-    @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var volume: UILabel!
-    @IBOutlet weak var up_button: UIButton!
-    @IBOutlet weak var down_button: UIButton!
-    @IBOutlet weak var volume_max: UILabel!
-    @IBOutlet weak var volume_min: UILabel!
-    
-    // sections
-    @IBOutlet weak var sectionTop: UILabel!
-    @IBOutlet weak var sectionLeft: UILabel!
-    @IBOutlet weak var sectionRight: UILabel!
-    
-    // label for preset
-    @IBOutlet weak var presetInput: UILabel!
+    // ACTION FUNCTIONS
     
     @IBAction func power(_ sender: UIButton) {
         let prevVolume = UserDefaults.standard.string(forKey: "volume")
         apiManager.power(volume: prevVolume!);
     }
-    
     
     @IBAction func sliderSlide(_ sender: UISlider) {
         volume.text = String(Int(slider.value));
@@ -162,19 +176,6 @@ class ChangePresetVCViewController: UIViewController {
         volume.text = String(Int(slider.value));
         UserDefaults.standard.set(volume.text, forKey: "volume");
         apiManager.volumeDown();
-    }
-    
-    
-    var inputVal = 0;
-    
-    func preset_num(num: Int) -> Int {
-        if (inputVal == 0) {
-            inputVal = num;
-        }
-        else if (inputVal < 100) {
-            inputVal = inputVal*10 + num;
-        }
-        return inputVal;
     }
     
     @IBAction func input_zero(_ sender: UIButton) {
@@ -227,32 +228,24 @@ class ChangePresetVCViewController: UIViewController {
         let newPreset = presetInput.text
         if (receivedPreset == "1") {
             UserDefaults.standard.set(newPreset, forKey: "Outlet1")
-            UserDefaults.standard.synchronize()
         } else if (receivedPreset == "2") {
             UserDefaults.standard.set(newPreset, forKey: "Outlet2")
-            UserDefaults.standard.synchronize()
         } else if (receivedPreset == "3") {
             UserDefaults.standard.set(newPreset, forKey: "Outlet3")
-            UserDefaults.standard.synchronize()
         } else if (receivedPreset == "4") {
             UserDefaults.standard.set(newPreset, forKey: "Outlet4")
-            UserDefaults.standard.synchronize()
         } else if (receivedPreset == "5") {
             UserDefaults.standard.set(newPreset, forKey: "Outlet5")
-            UserDefaults.standard.synchronize()
         } else if (receivedPreset == "6") {
             UserDefaults.standard.set(newPreset, forKey: "Outlet6")
-            UserDefaults.standard.synchronize()
         } else if (receivedPreset == "7") {
             UserDefaults.standard.set(newPreset, forKey: "Outlet7")
-            UserDefaults.standard.synchronize()
         } else if (receivedPreset == "8") {
             UserDefaults.standard.set(newPreset, forKey: "Outlet8")
-            UserDefaults.standard.synchronize()
         } else if (receivedPreset == "9") {
             UserDefaults.standard.set(newPreset, forKey: "Outlet9")
-            UserDefaults.standard.synchronize()
         }
+        UserDefaults.standard.synchronize()
     }
 
 }

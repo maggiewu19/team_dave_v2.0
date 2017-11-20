@@ -10,20 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let apiManager = APIManager();
+
+    // color vars
     let blue = UIColor(red: 52/255, green: 77/255, blue: 144/255, alpha: 0.65);
     let green = UIColor(red: 95/255, green: 185/255, blue: 142/255, alpha: 1);
     let red = UIColor(red: 245/255, green: 84/255, blue: 73/255, alpha: 1);
-    let test = UIColor(red: 231/255, green: 201/255, blue: 177/255, alpha: 1);
     let left = UIColor(red: 191/255, green: 220/255, blue: 207/255, alpha: 1);
     let right = UIColor(red: 213/255, green: 201/255, blue: 177/255, alpha: 1);
     
-    let apiManager = APIManager();
-    
-    // UIImage
+    // UIImage for scrollbar
     let min_track = UIImage(named: "min_track.png");
     let max_track = UIImage(named: "max_track.png");
     
-    
+    // keep track of which preset to change
     static var currentPreset = Int()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +38,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // current channel
         updateCurrentChannel();
         
         // set title for all presets by retrieving from UserDefaults
@@ -77,26 +76,29 @@ class ViewController: UIViewController {
         Outlet7.backgroundColor = blue
         Outlet8.backgroundColor = blue
         Outlet9.backgroundColor = blue
+        channelOutlet.backgroundColor = right
+        changeOutlet.backgroundColor = left
         
+        // set section colors
         sectionTop.backgroundColor = blue;
         sectionLeft.backgroundColor = left;
         sectionRight.backgroundColor = right;
         
-        // volume
-//        volume.text = String (Int(slider.value));
+        // volume + slider
         var sliderVal = UserDefaults.standard.string(forKey: "volume");
         if (sliderVal == nil) {
             sliderVal = "10"
         }
         volume.text = sliderVal;
         slider.value = NumberFormatter().number(from: sliderVal!) as! Float
-        
+        // make slider vertical
         slider.transform = CGAffineTransform(rotationAngle: -(CGFloat(Double.pi/2)));
         
+        // Slider Gesture Recognition
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
         self.slider.addGestureRecognizer(tapGestureRecognizer)
         
-        // Image
+        // Image for slider width
         self.slider.setMaximumTrackImage(max_track, for: UIControlState.normal)
         self.slider.setMinimumTrackImage(min_track, for: UIControlState.normal)
         
@@ -107,9 +109,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func updateCurrentChannel() {
-        currentChannel.text = UserDefaults.standard.string(forKey: "CurrentChannel")
-    }
+    // OUTLETS
     
     // volume
     @IBOutlet weak var volume: UILabel!
@@ -138,6 +138,32 @@ class ViewController: UIViewController {
     @IBOutlet weak var Outlet8: UIButton!
     @IBOutlet weak var Outlet9: UIButton!
     
+    // HELPER FUNCTIONS
+    
+    func updateCurrentChannel() {
+        currentChannel.text = UserDefaults.standard.string(forKey: "CurrentChannel")
+    }
+    
+    // Slider Gesture Recognition
+    @objc func sliderTapped(gestureRecognizer: UIGestureRecognizer) {
+        
+        let pointTapped: CGPoint = gestureRecognizer.location(in: self.view)
+        
+        let positionOfSlider: CGPoint = slider.frame.origin
+        let heightOfSlider: CGFloat = slider.frame.size.height
+        
+        let newValue = ((pointTapped.y - positionOfSlider.y) * CGFloat(slider.maximumValue) / heightOfSlider)
+        
+        let volume_value = Float(slider.maximumValue) - Float(newValue);
+        slider.setValue(volume_value, animated: true);
+        let currentV = volume.text;
+        volume.text = String(Int(volume_value));
+        UserDefaults.standard.set(volume.text, forKey: "volume");
+        apiManager.volume(currentVol: currentV!, newVol: volume.text!);
+    }
+    
+    // ACTION FUNCTIONS
+    
     // toggles preset buttons between red and blue
     // red = activated, ready to be changed
     // blue = not activated, normal preset button
@@ -165,28 +191,11 @@ class ViewController: UIViewController {
         }
     }
     
-    // Slider Gesture Recognition
-    @objc func sliderTapped(gestureRecognizer: UIGestureRecognizer) {
-        
-        let pointTapped: CGPoint = gestureRecognizer.location(in: self.view)
-        
-        let positionOfSlider: CGPoint = slider.frame.origin
-        let heightOfSlider: CGFloat = slider.frame.size.height
-        
-        let newValue = ((pointTapped.y - positionOfSlider.y) * CGFloat(slider.maximumValue) / heightOfSlider)
-        
-        let volume_value = Float(slider.maximumValue) - Float(newValue);
-        slider.setValue(volume_value, animated: true);
-        let currentV = volume.text;
-        volume.text = String(Int(volume_value));
-        UserDefaults.standard.set(volume.text, forKey: "volume");
-        apiManager.volume(currentVol: currentV!, newVol: volume.text!);
-    }
-    
     @IBAction func power(_ sender: UIButton) {
         let prevVolume = UserDefaults.standard.string(forKey: "volume")
         apiManager.power(volume: prevVolume!);
     }
+    
     @IBAction func sliderSlid(_ sender: UISlider) {
         volume.text = String (Int(slider.value));
         UserDefaults.standard.set(volume.text, forKey: "volume")

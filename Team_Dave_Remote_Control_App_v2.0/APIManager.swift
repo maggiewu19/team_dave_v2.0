@@ -9,9 +9,7 @@
 import Foundation
 
 class APIManager {
-    
-//    var ip = "http://18.24.1.249/"
-    
+        
     // The Boston Home
     var ip = "http://10.0.4.56/"
     
