@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let apiManager = APIManager();
+    let apiManager = APIManager.shared;
 
     // color vars
     let blue = UIColor(red: 52/255, green: 77/255, blue: 144/255, alpha: 0.65);
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         updateCurrentChannel();
         
         // set title for all presets by retrieving from UserDefaults

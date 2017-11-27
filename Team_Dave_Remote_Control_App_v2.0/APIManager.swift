@@ -9,14 +9,17 @@
 import Foundation
 
 class APIManager {
-        
-    // The Boston Home
-    var ip = "http://10.0.4.56/"
+    
+    public static let shared = APIManager()
+    // The Boston Home is default ip
+//    public var ip : String? = "10.0.4.56"
+    public var ip : String? = UserDefaults.standard.string(forKey: "ip")
+    public var email : String? = UserDefaults.standard.string(forKey: "email")
     
     func power(volume: String) {
         // setup the session to make POST call
         let param = "?params=" + volume
-        let postEndpoint: String = ip + "power" + param
+        let postEndpoint: String = "http://" + ip! + "/" + "power" + param
         let url = URL(string: postEndpoint)!
         let session = URLSession.shared
         let postParams : [String: Any] = ["return_value": 1,
@@ -50,7 +53,7 @@ class APIManager {
     func channel(channel: String) {
         // setup the session to make POST call
         let param = "?params=" + channel
-        let postEndpoint: String = ip + "channel" + param
+        let postEndpoint: String = "http://" + ip! + "/" + "channel" + param
         let url = URL(string: postEndpoint)!
         let session = URLSession.shared
         let postParams : [String: Any] = ["return_value": 1,
@@ -85,7 +88,7 @@ class APIManager {
     func volume(currentVol: String, newVol: String) {
         // setup the session to make POST call
         let param = "?params=" + "[" + currentVol + "," + newVol + "]";
-        let postEndpoint: String = ip + "volume" + param
+        let postEndpoint: String = "http://" + ip! + "/" + "volume" + param
         let url = URL(string: postEndpoint)!
         let session = URLSession.shared
         let postParams : [String: Any] = ["return_value": 1,
@@ -118,7 +121,7 @@ class APIManager {
 
     func volumeUp() {
         // setup the session to make POST call
-        let postEndpoint: String = ip + "volumeup"
+        let postEndpoint: String = "http://" + ip! + "/" + "volumeup"
         let url = URL(string: postEndpoint)!
         let session = URLSession.shared
         let postParams : [String: Any] = ["return_value": 1,
@@ -151,7 +154,7 @@ class APIManager {
 
     func volumeDown() {
         // setup the session to make POST call
-        let postEndpoint: String = ip + "volumedown"
+        let postEndpoint: String = "http://" + ip! + "/" + "volumedown"
         let url = URL(string: postEndpoint)!
         let session = URLSession.shared
         let postParams : [String: Any] = ["return_value": 1,

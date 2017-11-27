@@ -10,7 +10,7 @@ import UIKit
 
 class ChangePresetVCViewController: UIViewController {
     
-    let apiManager = APIManager();
+    let apiManager = APIManager.shared;
     
     // color vars
     let blue = UIColor(red: 52/255, green: 77/255, blue: 144/255, alpha: 0.65);

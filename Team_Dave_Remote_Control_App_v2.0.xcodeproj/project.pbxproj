@@ -23,6 +23,8 @@
 		C0DA26261FBCA8B80068E1F0 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DA26251FBCA8B80068E1F0 /* APIManager.swift */; };
 		C0DA26281FBE113E0068E1F0 /* min_track.png in Resources */ = {isa = PBXBuildFile; fileRef = C0DA26271FBE113E0068E1F0 /* min_track.png */; };
 		C0DA262A1FBE114F0068E1F0 /* max_track.png in Resources */ = {isa = PBXBuildFile; fileRef = C0DA26291FBE114F0068E1F0 /* max_track.png */; };
+		C0DA262C1FCC79CA0068E1F0 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DA262B1FCC79CA0068E1F0 /* PopUpViewController.swift */; };
+		C0DA262E1FCC84630068E1F0 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = C0DA262D1FCC84620068E1F0 /* cancel.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		C0DA26251FBCA8B80068E1F0 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		C0DA26271FBE113E0068E1F0 /* min_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = min_track.png; path = ../../../../../Downloads/min_track.png; sourceTree = "<group>"; };
 		C0DA26291FBE114F0068E1F0 /* max_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = max_track.png; path = ../../../../../Downloads/max_track.png; sourceTree = "<group>"; };
+		C0DA262B1FCC79CA0068E1F0 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		C0DA262D1FCC84620068E1F0 /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cancel.png; path = ../../../../../Downloads/cancel.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 		BA54AA751FA0F7CF002398B7 /* Team_Dave_Remote_Control_App_v2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				C0DA262D1FCC84620068E1F0 /* cancel.png */,
 				C0DA26291FBE114F0068E1F0 /* max_track.png */,
 				C0DA26271FBE113E0068E1F0 /* min_track.png */,
 				BA36CC1E1FAA2F4F00AAF368 /* back.png */,
@@ -126,6 +131,7 @@
 				C0D317131FA696F300462773 /* ChangePresetVCViewController.swift */,
 				BA3CE63B1FA7CF4300B192D5 /* ChannelViewController.swift */,
 				BA54AA7A1FA0F7CF002398B7 /* Main.storyboard */,
+				C0DA262B1FCC79CA0068E1F0 /* PopUpViewController.swift */,
 				C0DA26251FBCA8B80068E1F0 /* APIManager.swift */,
 				BA54AA7D1FA0F7CF002398B7 /* Assets.xcassets */,
 				BA54AA7F1FA0F7CF002398B7 /* LaunchScreen.storyboard */,
@@ -262,6 +268,7 @@
 				C0DA26281FBE113E0068E1F0 /* min_track.png in Resources */,
 				BA36CC1D1FAA2F4B00AAF368 /* up_button.png in Resources */,
 				C0D317121FA65CBF00462773 /* on_off.png in Resources */,
+				C0DA262E1FCC84630068E1F0 /* cancel.png in Resources */,
 				BA54AA811FA0F7CF002398B7 /* LaunchScreen.storyboard in Resources */,
 				BA36CC1F1FAA2F5000AAF368 /* back.png in Resources */,
 				BA36CC1B1FAA2F4600AAF368 /* down_button.png in Resources */,
@@ -293,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0DA26261FBCA8B80068E1F0 /* APIManager.swift in Sources */,
+				C0DA262C1FCC79CA0068E1F0 /* PopUpViewController.swift in Sources */,
 				C0D317141FA696F300462773 /* ChangePresetVCViewController.swift in Sources */,
 				BA54AA791FA0F7CF002398B7 /* ViewController.swift in Sources */,
 				BA3CE63C1FA7CF4300B192D5 /* ChannelViewController.swift in Sources */,
