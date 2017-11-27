@@ -10,7 +10,7 @@ import UIKit
 
 class ChannelViewController: UIViewController {
     
-    let apiManager = APIManager();
+    let apiManager = APIManager.shared;
 
     // color vars
     let blue = UIColor(red: 52/255, green: 77/255, blue: 144/255, alpha: 0.65);
@@ -242,5 +242,14 @@ class ChannelViewController: UIViewController {
         channel_val = 0;
         channel_input.text = String(channel_val);
     }
+    
+    @IBAction func showPopUp(_ sender: UIButton) {
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+    }
+    
 
 }
