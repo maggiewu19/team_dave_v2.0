@@ -11,8 +11,7 @@ import Foundation
 class APIManager {
     
     public static let shared = APIManager()
-    // The Boston Home is default ip
-//    public var ip : String? = "10.0.4.56"
+    // must set the ip and email when using app for the first time
     public var ip : String? = UserDefaults.standard.string(forKey: "ip")
     public var email : String? = UserDefaults.standard.string(forKey: "email")
     
@@ -184,4 +183,39 @@ class APIManager {
         }
         task.resume()
     }
+    
+    func email(email: String) {
+        // setup the session to make POST call
+        let param = "?params=" + email
+        let postEndpoint: String = "http://" + ip! + "/" + "email" + param
+        let url = URL(string: postEndpoint)!
+        let session = URLSession.shared
+        let postParams : [String: Any] = ["return_value": 1,
+                                          "id": "",
+                                          "name": "",
+                                          "hardware": "esp8266",
+                                          "connected": true]
+        
+        // create the request
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: postParams, options: [])
+        } catch {
+            print("Error: cannot create JSON from postParams")
+        }
+        
+        // make the POST call
+        let task = session.dataTask(with: request) {
+            (data, response, error) in
+            guard error == nil else {
+                print ("Error calling POST on email")
+                print (error as Any)
+                return
+            }
+            return
+        }
+        task.resume()
+    }
+
 }
