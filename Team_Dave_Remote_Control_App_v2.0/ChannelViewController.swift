@@ -84,6 +84,8 @@ class ChannelViewController: UIViewController {
         // Image for slider width
         self.slider.setMaximumTrackImage(max_track, for: UIControlState.normal)
         self.slider.setMinimumTrackImage(min_track, for: UIControlState.normal)
+        
+        self.slider.isContinuous = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -166,8 +168,10 @@ class ChannelViewController: UIViewController {
     // ACTION FUNCTIONS
     
     @IBAction func sliderSlide(_ sender: UISlider) {
+        let currentVol = UserDefaults.standard.string(forKey: "volume")
         volume.text = String(Int(slider.value));
         UserDefaults.standard.set(volume.text, forKey: "volume")
+        apiManager.volume(currentVol: currentVol!, newVol: UserDefaults.standard.string(forKey: "volume")!);
     }
     
     @IBAction func volumeUp(_ sender: UIButton) {
