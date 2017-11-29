@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Team_Dave_Remote_Control_App_v2.0.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>C792A9356C994E598FB8B4E9794EFE487D969DAB</string>
+				<key>dateExpires</key>
+				<string>11/3/18</string>
+				<key>type</key>
+				<string>iOS Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>MN5S8CDSSL.Students-6811.Team-Dave-Remote-Control-App-v2-0</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>MN5S8CDSSL</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>MN5S8CDSSL.Students-6811.Team-Dave-Remote-Control-App-v2-0</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>Team_Dave_Remote_Control_App_v2.0.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>232559e7-0b4c-4597-b8c6-3ce1d31c59f0</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>MN5S8CDSSL</string>
+				<key>name</key>
+				<string>Robert Miller</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
