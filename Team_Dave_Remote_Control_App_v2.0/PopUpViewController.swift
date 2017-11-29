@@ -21,7 +21,6 @@ class PopUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     @IBOutlet weak var ipField: UITextField!
     @IBOutlet weak var submitIP: UIButton!
     @IBOutlet weak var submitEmail: UIButton!
@@ -45,18 +44,8 @@ class PopUpViewController: UIViewController {
     
     @IBAction func changeEmail(_ sender: UIButton) {
         UserDefaults.standard.set(emailField.text, forKey: "email")
-        // CALL EMAIL API
+        APIManager.shared.email(email: UserDefaults.standard.string(forKey: "email")!)
         emailField.text = ""
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
