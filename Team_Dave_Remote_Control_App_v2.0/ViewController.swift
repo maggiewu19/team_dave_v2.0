@@ -200,7 +200,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func downAdjust(_ sender: UIButton) {
-        NSLog("hello")
         customSlider.value = customSlider.value - 1;
         volume.text = String(Int(customSlider.value));
         UserDefaults.standard.set(volume.text, forKey: "volume")

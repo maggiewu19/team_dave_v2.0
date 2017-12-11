@@ -83,7 +83,6 @@ class APIManager {
         task.resume()
     }
 
-    
     func volume(currentVol: String, newVol: String) {
         // setup the session to make POST call
         let param = "?params=" + "[" + currentVol + "," + newVol + "]";

@@ -12,13 +12,10 @@ class PopUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBOutlet weak var ipField: UITextField!
@@ -31,14 +28,8 @@ class PopUpViewController: UIViewController {
     }
     
     @IBAction func changeIP(_ sender: UIButton) {
-        if (APIManager.shared.ip == nil) {
-            NSLog("before is nil")
-        } else {
-            NSLog("before " + APIManager.shared.ip!)
-        }
         UserDefaults.standard.set(ipField.text, forKey: "ip")
         APIManager.shared.ip = UserDefaults.standard.string(forKey: "ip")
-        NSLog("after " + APIManager.shared.ip!)
         ipField.text = ""
     }
     

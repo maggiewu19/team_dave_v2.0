@@ -155,20 +155,12 @@ class ChannelViewController: UIViewController {
     
     // ACTION FUNCTIONS
     
-//    @IBAction func sliderSlide(_ sender: UISlider) {
-//        let currentVol = UserDefaults.standard.string(forKey: "volume")
-//        volume.text = String(Int(slider.value));
-//        UserDefaults.standard.set(volume.text, forKey: "volume")
-//        apiManager.volume(currentVol: currentVol!, newVol: UserDefaults.standard.string(forKey: "volume")!);
-//    }
-    
     @IBAction func sliderSlide(_ sender: Any) {
         let currentVol = UserDefaults.standard.string(forKey: "volume")
         volume.text = String(Int(customSlider.value));
         UserDefaults.standard.set(volume.text, forKey: "volume")
         apiManager.volume(currentVol: currentVol!, newVol: UserDefaults.standard.string(forKey: "volume")!);
     }
-    
     
     @IBAction func volumeUp(_ sender: UIButton) {
         customSlider.value = customSlider.value + 1;
@@ -250,6 +242,5 @@ class ChannelViewController: UIViewController {
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
     }
-    
 
 }
