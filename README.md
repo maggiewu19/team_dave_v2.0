@@ -17,4 +17,4 @@ You must also define your own preset channels on the preset page, as they are no
 
 ## App Overview
 
-This app consists of three pages: the preset page (ViewController), the channel page (ChannelViewController), and the change preset page (ChangePresetViewController). The channel page also contains settings, which opens a popup (PopUpViewController). The app opens up to the preset page, and the buttons at the top allow the user to navigate between pages.
+This app consists of three pages: the preset page (`ViewController`), the channel page (`ChannelViewController`), and the change preset page (`ChangePresetViewController`). The channel page also contains settings, which opens a popup (`PopUpViewController`). The app opens up to the preset page, and the buttons at the top allow the user to navigate between pages. `APIManager` handles all the API calls in order for the app the communicate with the Arduino to control the TV.
