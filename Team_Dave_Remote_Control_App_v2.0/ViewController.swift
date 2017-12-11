@@ -9,19 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     let apiManager = APIManager.shared;
-
+    
     // color vars
     let blue = UIColor(red: 52/255, green: 77/255, blue: 144/255, alpha: 0.65);
     let green = UIColor(red: 95/255, green: 185/255, blue: 142/255, alpha: 1);
     let red = UIColor(red: 245/255, green: 84/255, blue: 73/255, alpha: 1);
     let left = UIColor(red: 191/255, green: 220/255, blue: 207/255, alpha: 1);
     let right = UIColor(red: 213/255, green: 201/255, blue: 177/255, alpha: 1);
-    
-    // UIImage for scrollbar
-    let min_track = UIImage(named: "min_track.png");
-    let max_track = UIImage(named: "max_track.png");
     
     // keep track of which preset to change
     static var currentPreset = Int()
@@ -32,7 +27,7 @@ class ViewController: UIViewController {
             sliderVal = "10"
         }
         volume.text = sliderVal;
-        slider.value = NumberFormatter().number(from: sliderVal!) as! Float
+        customSlider.value = NumberFormatter().number(from: sliderVal!) as! Float
     }
     
     override func viewDidLoad() {
@@ -90,19 +85,12 @@ class ViewController: UIViewController {
             sliderVal = "10"
         }
         volume.text = sliderVal;
-        slider.value = NumberFormatter().number(from: sliderVal!) as! Float
-        // make slider vertical
-        slider.transform = CGAffineTransform(rotationAngle: -(CGFloat(Double.pi/2)));
+        customSlider.value = NumberFormatter().number(from: sliderVal!) as! Float
         
         // Slider Gesture Recognition
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
-        self.slider.addGestureRecognizer(tapGestureRecognizer)
+        customSlider.addGestureRecognizer(tapGestureRecognizer)
         
-        // Image for slider width
-        self.slider.setMaximumTrackImage(max_track, for: UIControlState.normal)
-        self.slider.setMinimumTrackImage(min_track, for: UIControlState.normal)
-        
-        self.slider.isContinuous = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -114,7 +102,7 @@ class ViewController: UIViewController {
     
     // volume
     @IBOutlet weak var volume: UILabel!
-    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var customSlider: CustomSlider!
     @IBOutlet weak var up_button: UIButton!
     @IBOutlet weak var down_button: UIButton!
     
@@ -150,18 +138,19 @@ class ViewController: UIViewController {
         
         let pointTapped: CGPoint = gestureRecognizer.location(in: self.view)
         
-        let positionOfSlider: CGPoint = slider.frame.origin
-        let heightOfSlider: CGFloat = slider.frame.size.height
+        let positionOfSlider: CGPoint = customSlider.frame.origin
+        let heightOfSlider: CGFloat = customSlider.frame.size.height
         
-        let newValue = ((pointTapped.y - positionOfSlider.y) * CGFloat(slider.maximumValue) / heightOfSlider)
+        let newValue = ((pointTapped.y - positionOfSlider.y) * CGFloat(customSlider.maximumValue) / heightOfSlider)
         
-        let volume_value = Float(slider.maximumValue) - Float(newValue);
-        slider.setValue(volume_value, animated: true);
+        let volume_value = Float(customSlider.maximumValue) - Float(newValue);
+        customSlider.setValue(volume_value, animated: true);
         let currentV = volume.text;
         volume.text = String(Int(volume_value));
         UserDefaults.standard.set(volume.text, forKey: "volume");
         apiManager.volume(currentVol: currentV!, newVol: volume.text!);
     }
+    
     
     // ACTION FUNCTIONS
     
@@ -197,23 +186,23 @@ class ViewController: UIViewController {
         apiManager.power(volume: prevVolume!);
     }
     
-    @IBAction func sliderSlid(_ sender: UISlider) {
+    @IBAction func sliderSlid(_ sender: CustomSlider) {
         let currentVol = UserDefaults.standard.string(forKey: "volume")
-        volume.text = String (Int(slider.value));
-        UserDefaults.standard.set(volume.text, forKey: "volume")
-        apiManager.volume(currentVol: currentVol!, newVol: UserDefaults.standard.string(forKey: "volume")!);
+                volume.text = String (Int(customSlider.value));
+                UserDefaults.standard.set(volume.text, forKey: "volume")
+                apiManager.volume(currentVol: currentVol!, newVol: UserDefaults.standard.string(forKey: "volume")!);
     }
     
     @IBAction func upAdjust(_ sender: UIButton) {
-        slider.value = slider.value + 1;
-        volume.text = String(Int(slider.value));
-        UserDefaults.standard.set(volume.text, forKey: "volume")
-        apiManager.volumeUp();
+                customSlider.value = customSlider.value + 1;
+                volume.text = String(Int(customSlider.value));                UserDefaults.standard.set(volume.text, forKey: "volume")
+                apiManager.volumeUp();
     }
     
     @IBAction func downAdjust(_ sender: UIButton) {
-        slider.value = slider.value - 1;
-        volume.text = String(Int(slider.value));
+        NSLog("hello")
+        customSlider.value = customSlider.value - 1;
+        volume.text = String(Int(customSlider.value));
         UserDefaults.standard.set(volume.text, forKey: "volume")
         apiManager.volumeDown();
     }
